@@ -231,6 +231,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9586784}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &17490983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17490984}
+  m_Layer: 0
+  m_Name: "AsientoNi\xF1a"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17490984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17490983}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.90397, y: -0.18673, z: 2.2869697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1578774698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &21738483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21738484}
+  m_Layer: 0
+  m_Name: AsientoJugador
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &21738484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21738483}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.9080701, y: -0.1919, z: 2.12117}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1578774698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138687251
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +305,7 @@ GameObject:
   - component: {fileID: 138687254}
   - component: {fileID: 138687253}
   - component: {fileID: 138687252}
+  - component: {fileID: 138687256}
   m_Layer: 0
   m_Name: Cube (33)
   m_TagString: Untagged
@@ -343,6 +406,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &138687256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138687251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_6
+  noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
+  pressDepth: 0.05
 --- !u!1 &149092329
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +433,7 @@ GameObject:
   - component: {fileID: 149092332}
   - component: {fileID: 149092331}
   - component: {fileID: 149092330}
+  - component: {fileID: 149092334}
   m_Layer: 0
   m_Name: Cube (22)
   m_TagString: Untagged
@@ -455,6 +534,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &149092334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149092329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_2
+  noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
+  pressDepth: 0.05
 --- !u!1 &157712913
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +561,7 @@ GameObject:
   - component: {fileID: 157712916}
   - component: {fileID: 157712915}
   - component: {fileID: 157712914}
+  - component: {fileID: 157712918}
   m_Layer: 0
   m_Name: Cube (14)
   m_TagString: Untagged
@@ -567,6 +662,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &157712918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157712913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T14
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &191596824
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +938,7 @@ GameObject:
   - component: {fileID: 357003220}
   - component: {fileID: 357003219}
   - component: {fileID: 357003218}
+  - component: {fileID: 357003222}
   m_Layer: 0
   m_Name: Cube (13)
   m_TagString: Untagged
@@ -928,6 +1039,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &357003222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357003217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T13
+  noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
+  pressDepth: 0.05
 --- !u!1 &394711117
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +1066,7 @@ GameObject:
   - component: {fileID: 394711120}
   - component: {fileID: 394711119}
   - component: {fileID: 394711118}
+  - component: {fileID: 394711122}
   m_Layer: 0
   m_Name: Cube (26)
   m_TagString: Untagged
@@ -1040,6 +1167,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &394711122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394711117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_7
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &409551105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1194,7 @@ GameObject:
   - component: {fileID: 409551108}
   - component: {fileID: 409551107}
   - component: {fileID: 409551106}
+  - component: {fileID: 409551110}
   m_Layer: 0
   m_Name: Cube (34)
   m_TagString: Untagged
@@ -1152,6 +1295,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &409551110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409551105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_5
+  noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
+  pressDepth: 0.05
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,9 +1446,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425539149}
+  - component: {fileID: 425539151}
+  - component: {fileID: 425539150}
   m_Layer: 0
   m_Name: "Ni\xF1a"
-  m_TagString: Untagged
+  m_TagString: Doll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1315,6 +1475,40 @@ Transform:
   - {fileID: 1864947992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425539150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425539148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf3812a6e113394ea02831d68cbada0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
+  isHeld: 0
+--- !u!65 &425539151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425539148}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.076107025, y: 0.14248593, z: 0.103609085}
+  m_Center: {x: -0.032701015, y: 0.021242969, z: -0.010142326}
 --- !u!1 &441664132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +2156,7 @@ GameObject:
   - component: {fileID: 539375809}
   - component: {fileID: 539375808}
   - component: {fileID: 539375807}
+  - component: {fileID: 539375811}
   m_Layer: 0
   m_Name: Cube (12)
   m_TagString: Untagged
@@ -2062,6 +2257,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &539375811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539375806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T12
+  noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
+  pressDepth: 0.05
 --- !u!1 &583381992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,6 +2771,7 @@ GameObject:
   - component: {fileID: 675102111}
   - component: {fileID: 675102110}
   - component: {fileID: 675102109}
+  - component: {fileID: 675102113}
   m_Layer: 0
   m_Name: Cube (29)
   m_TagString: Untagged
@@ -2661,6 +2872,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &675102113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675102108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_9
+  noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
+  pressDepth: 0.05
 --- !u!1 &723149198
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,6 +3170,7 @@ GameObject:
   - component: {fileID: 804782590}
   - component: {fileID: 804782589}
   - component: {fileID: 804782588}
+  - component: {fileID: 804782592}
   m_Layer: 0
   m_Name: Cube (11)
   m_TagString: Untagged
@@ -3044,6 +3271,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &804782592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804782587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T11
+  noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
+  pressDepth: 0.05
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,6 +3941,7 @@ GameObject:
   - component: {fileID: 894512373}
   - component: {fileID: 894512372}
   - component: {fileID: 894512371}
+  - component: {fileID: 894512375}
   m_Layer: 0
   m_Name: Cube (15)
   m_TagString: Untagged
@@ -3799,6 +4042,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &894512375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894512370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T15
+  noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
+  pressDepth: 0.05
 --- !u!1 &950557715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,6 +4748,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108527930}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1116562771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1116562773}
+  - component: {fileID: 1116562772}
+  m_Layer: 0
+  m_Name: PianoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1116562772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116562771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51612f286edd39b468a475b46760a28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoManager
+  correctSequence:
+  - T1
+  - T2
+  - T3
+  dollIsSeated: 0
+  dollSeatPoint: {fileID: 17490984}
+  dollNPC: {fileID: 425539148}
+  spawnPoints:
+  - {fileID: 950557716}
+  - {fileID: 1575532124}
+  - {fileID: 2021861291}
+  - {fileID: 583381993}
+  - {fileID: 1732271266}
+--- !u!4 &1116562773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116562771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.84749, y: 0.31672, z: -8.1282}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1124426987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5706,6 +6021,7 @@ GameObject:
   - component: {fileID: 1315923823}
   - component: {fileID: 1315923822}
   - component: {fileID: 1315923821}
+  - component: {fileID: 1315923825}
   m_Layer: 0
   m_Name: Cube (8)
   m_TagString: Untagged
@@ -5806,6 +6122,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1315923825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315923820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T8
+  noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1345509289
 GameObject:
   m_ObjectHideFlags: 0
@@ -5818,6 +6149,7 @@ GameObject:
   - component: {fileID: 1345509292}
   - component: {fileID: 1345509291}
   - component: {fileID: 1345509290}
+  - component: {fileID: 1345509294}
   m_Layer: 0
   m_Name: Cube (9)
   m_TagString: Untagged
@@ -5918,6 +6250,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1345509294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345509289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T9
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1355896840
 GameObject:
   m_ObjectHideFlags: 0
@@ -6170,6 +6517,7 @@ GameObject:
   - component: {fileID: 1408985133}
   - component: {fileID: 1408985132}
   - component: {fileID: 1408985131}
+  - component: {fileID: 1408985135}
   m_Layer: 0
   m_Name: Cube (32)
   m_TagString: Untagged
@@ -6270,6 +6618,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1408985135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408985130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_11
+  noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1424681882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6551,6 +6914,7 @@ GameObject:
   - component: {fileID: 1546126013}
   - component: {fileID: 1546126012}
   - component: {fileID: 1546126011}
+  - component: {fileID: 1546126015}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: Untagged
@@ -6651,6 +7015,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1546126015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546126010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T7
+  noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1550476348
 GameObject:
   m_ObjectHideFlags: 0
@@ -6663,6 +7042,7 @@ GameObject:
   - component: {fileID: 1550476351}
   - component: {fileID: 1550476350}
   - component: {fileID: 1550476349}
+  - component: {fileID: 1550476353}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: Untagged
@@ -6763,6 +7143,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1550476353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550476348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T5
+  noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1575532123
 GameObject:
   m_ObjectHideFlags: 0
@@ -6793,6 +7188,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2064373938}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578774697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578774698}
+  m_Layer: 0
+  m_Name: Asientos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578774698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578774697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.58677, y: 0.45313, z: -10.27267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 21738484}
+  - {fileID: 17490984}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1588243453
 GameObject:
@@ -6955,7 +7383,7 @@ GameObject:
   - component: {fileID: 1710495416}
   m_Layer: 0
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: AsientoJugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7098,6 +7526,7 @@ GameObject:
   - component: {fileID: 1815168335}
   - component: {fileID: 1815168334}
   - component: {fileID: 1815168333}
+  - component: {fileID: 1815168337}
   m_Layer: 0
   m_Name: Cube (17)
   m_TagString: Untagged
@@ -7198,6 +7627,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1815168337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815168332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T4
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1815625824
 GameObject:
   m_ObjectHideFlags: 0
@@ -7210,6 +7654,7 @@ GameObject:
   - component: {fileID: 1815625827}
   - component: {fileID: 1815625826}
   - component: {fileID: 1815625825}
+  - component: {fileID: 1815625829}
   m_Layer: 0
   m_Name: Cube (10)
   m_TagString: Untagged
@@ -7310,6 +7755,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1815625829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815625824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T10
+  noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1833268552
 GameObject:
   m_ObjectHideFlags: 0
@@ -7617,6 +8077,7 @@ GameObject:
   - component: {fileID: 1851403229}
   - component: {fileID: 1851403228}
   - component: {fileID: 1851403227}
+  - component: {fileID: 1851403231}
   m_Layer: 0
   m_Name: Cube (28)
   m_TagString: Untagged
@@ -7717,6 +8178,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1851403231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851403226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_8
+  noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1855968339
 GameObject:
   m_ObjectHideFlags: 0
@@ -7729,6 +8205,7 @@ GameObject:
   - component: {fileID: 1855968342}
   - component: {fileID: 1855968341}
   - component: {fileID: 1855968340}
+  - component: {fileID: 1855968344}
   m_Layer: 0
   m_Name: Cube (23)
   m_TagString: Untagged
@@ -7829,6 +8306,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1855968344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855968339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_3
+  noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1864947991
 GameObject:
   m_ObjectHideFlags: 0
@@ -8067,6 +8559,7 @@ GameObject:
   - component: {fileID: 1883213169}
   - component: {fileID: 1883213168}
   - component: {fileID: 1883213167}
+  - component: {fileID: 1883213171}
   m_Layer: 0
   m_Name: Cube (16)
   m_TagString: Untagged
@@ -8167,6 +8660,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1883213171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883213166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T16
+  noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1918820000
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,6 +8687,7 @@ GameObject:
   - component: {fileID: 1918820003}
   - component: {fileID: 1918820002}
   - component: {fileID: 1918820001}
+  - component: {fileID: 1918820005}
   m_Layer: 0
   m_Name: Cube (25)
   m_TagString: Untagged
@@ -8279,6 +8788,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1918820005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1918820000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_4
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &1931225378
 GameObject:
   m_ObjectHideFlags: 0
@@ -8291,6 +8815,7 @@ GameObject:
   - component: {fileID: 1931225381}
   - component: {fileID: 1931225380}
   - component: {fileID: 1931225379}
+  - component: {fileID: 1931225383}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -8393,6 +8918,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1624441480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1931225383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931225378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52af8c4e27836444b242eb896a8384c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SeatLogic
+  pianoManager: {fileID: 1116562772}
+  detectionRadius: 1.5
 --- !u!1 &1943262439
 GameObject:
   m_ObjectHideFlags: 0
@@ -8594,6 +9133,7 @@ GameObject:
   - component: {fileID: 2001886216}
   - component: {fileID: 2001886215}
   - component: {fileID: 2001886214}
+  - component: {fileID: 2001886218}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: Untagged
@@ -8694,6 +9234,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &2001886218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001886213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T6
+  noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
+  pressDepth: 0.05
 --- !u!1 &2021861290
 GameObject:
   m_ObjectHideFlags: 0
@@ -8737,6 +9292,7 @@ GameObject:
   - component: {fileID: 2047742166}
   - component: {fileID: 2047742165}
   - component: {fileID: 2047742164}
+  - component: {fileID: 2047742168}
   m_Layer: 0
   m_Name: Cube (30)
   m_TagString: Untagged
@@ -8837,6 +9393,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &2047742168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047742163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T_10
+  noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
+  pressDepth: 0.05
 --- !u!1 &2064373937
 GameObject:
   m_ObjectHideFlags: 0
@@ -9021,6 +9592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   walkSpeed: 0.9
   gravity: -9.81
+  canMove: 1
   playerCamera: {fileID: 330585545}
   lookSpeed: 2
   lookXLimit: 54.2
@@ -9159,6 +9731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
   playerCam: {fileID: 330585545}
   interactionDistance: 3
+  holdPoint: {fileID: 21738484}
 --- !u!1 &2109961148
 GameObject:
   m_ObjectHideFlags: 0
@@ -9171,6 +9744,7 @@ GameObject:
   - component: {fileID: 2109961151}
   - component: {fileID: 2109961150}
   - component: {fileID: 2109961149}
+  - component: {fileID: 2109961153}
   m_Layer: 0
   m_Name: Cube (18)
   m_TagString: Untagged
@@ -9271,6 +9845,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1131047781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &2109961153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109961148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c19a1ef897ebf43a4b7a2883b18bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PianoKey
+  noteName: T3
+  noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
+  pressDepth: 0.05
 --- !u!1 &2120911472
 GameObject:
   m_ObjectHideFlags: 0
@@ -9403,3 +9992,5 @@ SceneRoots:
   - {fileID: 1006382088}
   - {fileID: 1232763167}
   - {fileID: 1089945515}
+  - {fileID: 1116562773}
+  - {fileID: 1578774698}

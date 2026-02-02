@@ -21,7 +21,7 @@ public class PianoKey : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = noteSound;
         audioSource.playOnAwake = false;
-        pianoManager = FindObjectOfType<PianoManager>(); // Busca el manager en la escena
+        pianoManager = Object.FindFirstObjectByType<PianoManager>(); // Busca el manager en la escena
     }
 
     public void Press()

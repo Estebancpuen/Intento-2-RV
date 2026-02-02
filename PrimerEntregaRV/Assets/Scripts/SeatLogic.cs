@@ -7,13 +7,14 @@ public class SeatLogic : MonoBehaviour
 
     void Update()
     {
-        // Si el jugador suelta a la niña cerca del asiento (puedes llamar a esto desde tu script de agarrar)
-        // Por ahora, lo haremos automático si la niña está cerca
-        float distance = Vector3.Distance(transform.position, pianoManager.dollNPC.transform.position);
-
-        if (distance < detectionRadius && !pianoManager.dollIsSeated)
+        // Solo verificar distancia si el manager dice que NO está sentada aún
+        if (pianoManager.dollNPC != null && !pianoManager.dollIsSeated)
         {
-            SitDoll();
+            float distance = Vector3.Distance(transform.position, pianoManager.dollNPC.transform.position);
+            if (distance < detectionRadius)
+            {
+                SitDoll();
+            }
         }
     }
 

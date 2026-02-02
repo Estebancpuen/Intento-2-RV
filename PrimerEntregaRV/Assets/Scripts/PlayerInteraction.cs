@@ -32,9 +32,29 @@ public class PlayerInteraction : MonoBehaviour
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, interactionDistance))
+        // Aumentamos la distancia de interacción a 5f por si el asiento está lejos
+        if (Physics.Raycast(ray, out hit, 5f))
         {
-            // 1. LÓGICA DE AGARRAR NIÑA
+            // PRIORIDAD: Detectar teclas
+            PianoKey key = hit.collider.GetComponent<PianoKey>();
+            if (key != null)
+            {
+                if (isSeated)
+                {
+                    PianoManager pm = Object.FindFirstObjectByType<PianoManager>();
+                    if (pm != null && pm.dollIsSeated)
+                    {
+                        key.Press();
+                    }
+                    else
+                    {
+                        Debug.Log("No puedes tocar: la niña no está sentada correctamente.");
+                    }
+                }
+                return; // Salir después de intentar tocar una tecla
+            }
+
+            // Detectar Agarrar Niña
             PickUpItem item = hit.collider.GetComponent<PickUpItem>();
             if (item != null && heldItem == null)
             {
@@ -43,30 +63,11 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            // 2. LÓGICA DE SENTARSE (Si toca el cilindro grande)
-            if (hit.collider.CompareTag("AsientoJugador"))
+            // Detectar Asiento
+            if (hit.collider.CompareTag("AsientoJugador") && !isSeated)
             {
                 SitDown(hit.collider.transform);
                 return;
-            }
-
-            // 3. LÓGICA DE TECLAS (Si ya está sentado)
-            if (isSeated)
-            {
-                PianoKey key = hit.collider.GetComponent<PianoKey>();
-                if (key != null)
-                {
-                    // Solo intentamos tocar si la niña está sentada
-                    PianoManager pm = FindObjectOfType<PianoManager>();
-                    if (pm != null && pm.dollIsSeated)
-                    {
-                        key.Press();
-                    }
-                    else
-                    {
-                        Debug.Log("No puedes tocar el piano solo... necesitas compañía.");
-                    }
-                }
             }
         }
     }
@@ -74,12 +75,25 @@ public class PlayerInteraction : MonoBehaviour
     void SitDown(Transform seat)
     {
         isSeated = true;
-        movementScript.canMove = false; // Solo bloqueamos el caminar, no la rotación
+        movementScript.canMove = false; // Mantenemos la rotación activa
         characterController.enabled = false;
 
-        transform.position = seat.position + Vector3.up * 0.5f;
-        transform.rotation = seat.rotation;
+        // Buscamos si el asiento tiene un hijo llamado "SitPoint"
+        Transform customSitPoint = seat.Find("SitPoint");
 
+        if (customSitPoint != null)
+        {
+            transform.position = customSitPoint.position;
+            transform.rotation = customSitPoint.rotation;
+        }
+        else
+        {
+            // Si no existe el hijo, usamos el método anterior con un ajuste bajo
+            transform.position = seat.position + Vector3.up * 0.1f;
+            transform.rotation = seat.rotation;
+        }
+
+        // Lógica de la niña
         if (heldItem != null)
         {
             SeatLogic seatLogic = FindObjectOfType<SeatLogic>();
