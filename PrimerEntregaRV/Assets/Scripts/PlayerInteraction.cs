@@ -3,105 +3,126 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public Camera playerCam;
-    public float interactionDistance = 3f;
-    public Transform holdPoint; // Arrastra el objeto "HoldPoint" aquí
+    public float interactionDistance = 5f;
+    public Transform holdPoint;
+    public GameObject interactUI;
 
     private PickUpItem heldItem;
     private bool isSeated = false;
-    private Vector3 originalPosition;
-    private PlayerMovement movementScript; // Tu script de caminar
-    private CharacterController characterController; // DECLARACIÓN FALTANTE
+    private PlayerMovement movementScript;
+    private CharacterController characterController;
 
     void Start()
     {
         movementScript = GetComponent<PlayerMovement>();
-        characterController = GetComponent<CharacterController>(); // ASIGNACIÓN
+        characterController = GetComponent<CharacterController>();
+        if (interactUI) interactUI.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // Usaremos la E para interactuar
+        HandleRaycast();
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (isSeated) { StandUp(); }
-            else { ShootRay(); }
+            if (isSeated) StandUp();
+            else ExecuteInteraction();
+        }
+
+        // Nueva opción: Tocar con el click
+        if (Input.GetMouseButtonDown(0) && isSeated)
+        {
+            ExecuteInteraction();
         }
     }
 
-    void ShootRay()
+    void HandleRaycast()
+    {
+        Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        bool hitSomething = false;
+
+        if (Physics.Raycast(ray, out hit, interactionDistance))
+        {
+            if (hit.collider.GetComponent<PianoKey>() ||
+                hit.collider.GetComponent<PickUpItem>() ||
+                hit.collider.CompareTag("AsientoJugador"))
+            {
+                hitSomething = true;
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
+            }
+            else
+            {
+                Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
+            }
+        }
+        else
+        {
+            Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
+        }
+
+        if (interactUI) interactUI.SetActive(hitSomething);
+    }
+
+    void ExecuteInteraction()
     {
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        // Aumentamos la distancia de interacción a 5f por si el asiento está lejos
-        if (Physics.Raycast(ray, out hit, 5f))
+        if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            // PRIORIDAD: Detectar teclas
+            // 1. PRIORIDAD: Si miramos una tecla, la tocamos (estemos sentados o no)
             PianoKey key = hit.collider.GetComponent<PianoKey>();
             if (key != null)
             {
-                if (isSeated)
-                {
-                    PianoManager pm = Object.FindFirstObjectByType<PianoManager>();
-                    if (pm != null && pm.dollIsSeated)
-                    {
-                        key.Press();
-                    }
-                    else
-                    {
-                        Debug.Log("No puedes tocar: la niña no está sentada correctamente.");
-                    }
-                }
-                return; // Salir después de intentar tocar una tecla
+                key.Press();
+                return; // Importante: Salimos para no ejecutar StandUp()
             }
 
-            // Detectar Agarrar Niña
+            // 2. RECOGER MUÑECA
             PickUpItem item = hit.collider.GetComponent<PickUpItem>();
-            if (item != null && heldItem == null)
+            if (item != null && heldItem == null && !isSeated)
             {
                 heldItem = item;
                 item.OnPickup(holdPoint);
                 return;
             }
 
-            // Detectar Asiento
+            // 3. SENTARSE (Solo si no estamos sentados ya)
             if (hit.collider.CompareTag("AsientoJugador") && !isSeated)
             {
                 SitDown(hit.collider.transform);
                 return;
             }
         }
+
+        // 4. SI NO MIRAMOS NADA INTERACTUABLE Y ESTAMOS SENTADOS, NOS LEVANTAMOS
+        if (isSeated)
+        {
+            StandUp();
+        }
     }
 
     void SitDown(Transform seat)
     {
         isSeated = true;
-        movementScript.canMove = false; // Mantenemos la rotación activa
-        characterController.enabled = false;
+        movementScript.canMove = false;
+        if (characterController) characterController.enabled = false;
 
-        // Buscamos si el asiento tiene un hijo llamado "SitPoint"
         Transform customSitPoint = seat.Find("SitPoint");
+        transform.position = customSitPoint ? customSitPoint.position : seat.position + Vector3.up * 0.1f;
+        transform.rotation = customSitPoint ? customSitPoint.rotation : seat.rotation;
 
-        if (customSitPoint != null)
-        {
-            transform.position = customSitPoint.position;
-            transform.rotation = customSitPoint.rotation;
-        }
-        else
-        {
-            // Si no existe el hijo, usamos el método anterior con un ajuste bajo
-            transform.position = seat.position + Vector3.up * 0.1f;
-            transform.rotation = seat.rotation;
-        }
-
-        // Lógica de la niña
         if (heldItem != null)
         {
-            SeatLogic seatLogic = FindObjectOfType<SeatLogic>();
+            SeatLogic seatLogic = Object.FindFirstObjectByType<SeatLogic>();
             if (seatLogic != null)
             {
                 heldItem.OnDrop();
-                heldItem = null;
+                heldItem.transform.position = seatLogic.pianoManager.dollSeatPoint.position;
+                heldItem.transform.rotation = seatLogic.pianoManager.dollSeatPoint.rotation;
                 seatLogic.SitDoll();
+                heldItem = null;
             }
         }
     }
@@ -109,7 +130,7 @@ public class PlayerInteraction : MonoBehaviour
     void StandUp()
     {
         isSeated = false;
-        characterController.enabled = true;
-        movementScript.canMove = true; // Devolvemos el control del caminar
+        if (characterController) characterController.enabled = true;
+        movementScript.canMove = true;
     }
 }

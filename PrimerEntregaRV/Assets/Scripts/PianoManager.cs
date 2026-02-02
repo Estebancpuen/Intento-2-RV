@@ -17,7 +17,7 @@ public class PianoManager : MonoBehaviour
         // BLOQUEO: Si la niña no está sentada, no procesa la nota
         if (!dollIsSeated)
         {
-            Debug.Log("El piano emite un sonido sordo... la niña debe estar a tu lado.");
+            Debug.Log("La muñeca no está mirando, el puzzle no avanza.");
             return;
         }
 
