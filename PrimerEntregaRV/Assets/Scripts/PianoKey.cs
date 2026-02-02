@@ -11,6 +11,8 @@ public class PianoKey : MonoBehaviour
     private bool isPressing = false;
     public float pressDepth = 0.05f;
 
+    private PianoManager pianoManager;
+
     void Start()
     {
         originalPosition = transform.localPosition;
@@ -19,6 +21,7 @@ public class PianoKey : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = noteSound;
         audioSource.playOnAwake = false;
+        pianoManager = FindObjectOfType<PianoManager>(); // Busca el manager en la escena
     }
 
     public void Press()
@@ -42,7 +45,7 @@ public class PianoKey : MonoBehaviour
         {
             Debug.LogWarning("¡Falta el archivo de sonido en la tecla: " + noteName);
         }
-
+        pianoManager.RegisterKeyPress(noteName);
         // Movimiento visual
         transform.localPosition = originalPosition + new Vector3(0, -pressDepth, 0);
         Debug.Log("Tocaste: " + noteName);
