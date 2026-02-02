@@ -49,6 +49,24 @@ public class PianoManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, spawnPoints.Length);
         dollNPC.transform.position = spawnPoints[randomIndex].position;
-        // Si la niña tiene un Rigidbody, es bueno poner isKinematic = false aquí
+        dollNPC.transform.rotation = spawnPoints[randomIndex].rotation;
+
+        PickUpItem itemScript = dollNPC.GetComponent<PickUpItem>();
+        if (itemScript != null)
+        {
+            itemScript.OnDrop();
+        }
+
+        // NUEVO: Avisar al PlayerInteraction que ya no tiene a la muñeca
+        PlayerInteraction player = Object.FindFirstObjectByType<PlayerInteraction>();
+        if (player != null)
+        {
+            // Necesitarás hacer 'heldItem' público en PlayerInteraction o crear un método ResetHeldItem()
+            player.ResetHeldItem();
+        }
+
+        Debug.Log("La muñeca se ha marchado...");
     }
+
+
 }

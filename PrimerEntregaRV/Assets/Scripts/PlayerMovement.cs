@@ -5,16 +5,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ajustes de Movimiento")]
     public float walkSpeed = 5f;
     public float gravity = -20f;
-    public bool canMove = true; // NUEVA VARIABLE PARA CONTROLAR EL ESTADO
+    public bool canMove = true;
 
     [Header("Ajustes de Cámara")]
     public Camera playerCamera;
     public float lookSpeed = 2f;
     public float lookXLimit = 85f;
 
-    CharacterController characterController;
-    Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0;
+    private CharacterController characterController;
+    private Vector3 moveDirection = Vector3.zero;
+    private float rotationX = 0;
 
     void Start()
     {
@@ -25,23 +25,46 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // --- LA ROTACIÓN SIEMPRE FUNCIONA (para poder mirar el piano) ---
-        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+
+        if (characterController == null || !characterController.enabled) return;
+
+        PickUpItem doll = Object.FindFirstObjectByType<PickUpItem>();
+        if (doll != null && doll.isInspecting)
+        {
+            // Opcional: Liberar el cursor para que no se mueva la cámara pero sí la muñeca
+            Cursor.lockState = CursorLockMode.Locked; // Mantener bloqueado para rotación
+            Cursor.visible = false;
+            return;
+        }
+
+        // Si no estamos inspeccionando, volvemos a bloquear el cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // 1. ROTACIÓN
+        float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
+        float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
+
+
+        rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+
+        // Rotación vertical de la cámara
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
 
-        // --- EL MOVIMIENTO SOLO FUNCIONA SI canMove ES TRUE ---
-        if (!canMove) return;
+        // Rotación horizontal del cuerpo (CON R MAYÚSCULA)
+        transform.Rotate(Vector3.up * mouseX);
 
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
+        // 2. MOVIMIENTO
+        HandleMovement();
+    }
 
-        float curSpeedX = walkSpeed * Input.GetAxis("Vertical");
-        float curSpeedY = walkSpeed * Input.GetAxis("Horizontal");
+    void HandleMovement()
+    {
 
-        Vector3 horizontalMove = (forward * curSpeedX) + (right * curSpeedY);
+        if (!characterController.enabled) return;
 
+        // Aplicamos gravedad siempre para que el controller detecte el suelo correctamente
         if (characterController.isGrounded)
         {
             moveDirection.y = -2f;
@@ -51,8 +74,24 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y += gravity * Time.deltaTime;
         }
 
-        moveDirection.x = horizontalMove.x;
-        moveDirection.z = horizontalMove.z;
+        if (!canMove)
+        {
+            moveDirection.x = 0;
+            moveDirection.z = 0;
+            characterController.Move(moveDirection * Time.deltaTime);
+            return;
+        }
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
+
+        float curSpeedX = walkSpeed * Input.GetAxis("Vertical");
+        float curSpeedY = walkSpeed * Input.GetAxis("Horizontal");
+
+        // Guardamos la Y de la gravedad antes de calcular la dirección horizontal
+        float lastY = moveDirection.y;
+        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        moveDirection.y = lastY;
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
