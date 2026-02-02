@@ -1490,7 +1490,7 @@ MonoBehaviour:
   isHeld: 0
   isInspecting: 0
   inspectionOffset: {x: 0, y: 0, z: 0.5}
-  rotationSpeed: 5
+  rotationSpeed: 100
 --- !u!65 &425539151
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections.Generic;
 
 public class PianoManager : MonoBehaviour
@@ -7,66 +7,94 @@ public class PianoManager : MonoBehaviour
     private List<string> playerInput = new List<string>();
 
     [Header("Asientos y Estados")]
-    public bool dollIsSeated = false; // El piano consultará esto
-    public Transform dollSeatPoint;   // Arrastra el punto del cilindro pequeño
+    public bool dollIsSeated = false; // El piano consultarÃ¡ esto
+    public Transform dollSeatPoint;   // Arrastra el punto del cilindro pequeÃ±o
     public GameObject dollNPC;
     public Transform[] spawnPoints;
+    [Header("LÃ­mite de intentos")]
+    public int maxNotesBeforeEscape = 2;
 
     public void RegisterKeyPress(string noteName)
     {
-        // BLOQUEO: Si la niña no está sentada, no procesa la nota
         if (!dollIsSeated)
         {
-            Debug.Log("La muñeca no está mirando, el puzzle no avanza.");
+            Debug.Log("La muÃ±eca no estÃ¡ mirando, el puzzle no avanza.");
             return;
         }
 
         playerInput.Add(noteName);
 
-        for (int i = 0; i < playerInput.Count; i++)
+        Debug.Log("Nota tocada: " + noteName);
+
+        // ðŸŽ¯ Si aÃºn no ha llegado al lÃ­mite, no evaluamos todavÃ­a
+        if (playerInput.Count < maxNotesBeforeEscape)
         {
-            if (playerInput[i] != correctSequence[i])
+            return;
+        }
+
+        // ðŸ” Ahora sÃ­ evaluamos cuando ya tocÃ³ las 2 notas
+        bool sequenceCorrect = true;
+
+        for (int i = 0; i < correctSequence.Length; i++)
+        {
+            if (i >= playerInput.Count || playerInput[i] != correctSequence[i])
             {
-                HandleMistake();
-                return;
+                sequenceCorrect = false;
+                break;
             }
         }
 
-        if (playerInput.Count == correctSequence.Length)
+        if (sequenceCorrect)
         {
-            Debug.Log("¡Puerta abierta!");
+            Debug.Log("Â¡Secuencia correcta, puerta abierta!");
+        }
+        else
+        {
+            Debug.Log("Secuencia incorrectaâ€¦ la niÃ±a se fue.");
+            HandleMistake();
         }
     }
 
+
+
     void HandleMistake()
     {
+        Debug.Log("Secuencia incorrectaâ€¦ la niÃ±a se asustÃ³.");
+
         playerInput.Clear();
-        dollIsSeated = false; // La niña ya no está sentada porque va a teletransportarse
+        dollIsSeated = false;
+
         TeleportDoll();
     }
 
     void TeleportDoll()
     {
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        dollNPC.transform.position = spawnPoints[randomIndex].position;
-        dollNPC.transform.rotation = spawnPoints[randomIndex].rotation;
+        if (spawnPoints.Length == 0) return;
 
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+        Transform spawn = spawnPoints[randomIndex];
+
+        // Soltarla de cualquier estado (mano o asiento)
         PickUpItem itemScript = dollNPC.GetComponent<PickUpItem>();
         if (itemScript != null)
         {
             itemScript.OnDrop();
         }
 
-        // NUEVO: Avisar al PlayerInteraction que ya no tiene a la muñeca
+        dollNPC.transform.SetParent(null);
+        dollNPC.transform.position = spawn.position;
+        dollNPC.transform.rotation = spawn.rotation;
+
+        // Avisar al jugador que ya no la tiene
         PlayerInteraction player = Object.FindFirstObjectByType<PlayerInteraction>();
         if (player != null)
         {
-            // Necesitarás hacer 'heldItem' público en PlayerInteraction o crear un método ResetHeldItem()
             player.ResetHeldItem();
         }
 
-        Debug.Log("La muñeca se ha marchado...");
+        Debug.Log("La niÃ±a se ha escapado a otro lugar...");
     }
+
 
 
 }

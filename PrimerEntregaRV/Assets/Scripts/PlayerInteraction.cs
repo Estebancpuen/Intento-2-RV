@@ -12,6 +12,10 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerMovement movementScript;
     private CharacterController characterController;
 
+    [Header("UI Inspección")]
+    public CanvasGroup inspectFadePanel;
+    public float fadeSpeed = 5f;
+
     void Start()
     {
         movementScript = GetComponent<PlayerMovement>();
@@ -34,6 +38,8 @@ public class PlayerInteraction : MonoBehaviour
         {
             TryTouchPiano();
         }
+
+        HandleInspectFade();
     }
 
     void HandleRaycast()
@@ -69,25 +75,17 @@ public class PlayerInteraction : MonoBehaviour
     void ExecuteInteraction()
     {
 
-        // PRIORIDAD: Si estamos inspeccionando, el primer clic/E solo sirve para dejar de inspeccionar
         if (heldItem != null && heldItem.isInspecting)
         {
             heldItem.OnPickup(holdPoint);
             movementScript.canMove = true;
-            return; // Salimos inmediatamente para no detectar el asiento en este frame
+            Debug.Log("Muñeca ahora está sostenida.");
+            return;
         }
 
 
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-
-        // 1. SI ESTÁ INSPECCIONANDO: Al presionar E, solo debe pasar a la mano.
-        if (heldItem != null && heldItem.isInspecting)
-        {
-            heldItem.OnPickup(holdPoint);
-            movementScript.canMove = true;
-            return; // IMPORTANTE: Salimos de la función aquí para que no haga nada más este frame
-        }
 
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
@@ -125,9 +123,10 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         // 6. LEVANTARSE
-        if (isSeated && !isSeatedConMuñecaEnMano()) // Función opcional para evitar levantarse por error
+        if (isSeated && (heldItem == null || !heldItem.isInspecting))
         {
             StandUp();
+            return;
         }
     }
 
@@ -165,6 +164,7 @@ public class PlayerInteraction : MonoBehaviour
             seatLogic.SitDoll();
             heldItem = null;
         }
+
     }
 
     void StandUp()
@@ -179,9 +179,32 @@ public class PlayerInteraction : MonoBehaviour
         heldItem = null;
     }
 
+    public bool IsInspecting()
+    {
+        return heldItem != null && heldItem.isInspecting;
+    }
+
     // Función para verificar si el jugador está sentado y tiene a la muñeca
     bool isSeatedConMuñecaEnMano()
     {
         return isSeated && heldItem != null;
     }
+
+    void HandleInspectFade()
+    {
+        if (inspectFadePanel == null) return;
+
+        bool inspecting = heldItem != null && heldItem.isInspecting;
+        float targetAlpha = inspecting ? 1f : 0f;
+
+        inspectFadePanel.alpha = Mathf.MoveTowards(
+            inspectFadePanel.alpha,
+            targetAlpha,
+            fadeSpeed * Time.deltaTime
+        );
+
+        inspectFadePanel.blocksRaycasts = inspecting;
+        inspectFadePanel.interactable = inspecting;
+    }
+
 }

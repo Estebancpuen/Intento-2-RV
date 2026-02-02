@@ -1,13 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
     public bool isHeld = false;
     public bool isInspecting = false;
 
-    [Header("Ajustes de Inspección")]
-    public Vector3 inspectionOffset = new Vector3(0, 0, 0.6f);
-    public float rotationSpeed = 450f; // Sube esto en el inspector también
+    [Header("InspecciÃ³n")]
+    public Vector3 inspectionOffset = new Vector3(0, 0, 0.4f);
+    public float rotationSpeed = 600f;
+
+    [Header("Sujetar en brazos")]
+    public Vector3 holdOffset = new Vector3(0f, -0.35f, 0.6f);
+
+    [Tooltip("RotaciÃ³n inicial al inspeccionar (para que el frente del modelo mire a la cÃ¡mara)")]
+    public Vector3 inspectionRotationEuler = new Vector3(0f, 180f, 0f);
 
     private Rigidbody rb;
 
@@ -18,49 +24,51 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
-        if (isInspecting)
+        if (isInspecting && Input.GetMouseButton(0)) // 0 = Click izquierdo
         {
-            // Usamos los ejes del mouse para rotar el objeto sobre sí mismo
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
             float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
 
-            // Rotación en ejes locales para que se sienta natural
             transform.Rotate(Vector3.up, -rotX, Space.World);
             transform.Rotate(Vector3.right, rotY, Space.World);
         }
     }
 
+    // ðŸ”Ž MODO INSPECCIÃ“N
     public void OnInspect(Transform cameraTransform)
     {
         isInspecting = true;
         isHeld = false;
+
         if (rb) rb.isKinematic = true;
 
         transform.SetParent(cameraTransform);
-
-        // ESTABILIDAD: Forzamos la posición local exacta frente a la cámara
         transform.localPosition = inspectionOffset;
-        transform.localRotation = Quaternion.identity;
+        transform.localRotation = Quaternion.Euler(inspectionRotationEuler);
     }
 
+    // âœ‹ MODO CARGANDO (EN BRAZOS)
     public void OnPickup(Transform holdPoint)
     {
         isInspecting = false;
         isHeld = true;
 
+        if (rb) rb.isKinematic = true;
+
         transform.SetParent(holdPoint);
-        // Forzamos posición y rotación cero respecto al nuevo padre (la mano)
+
+        // IMPORTANTE: posiciÃ³n EXACTA del HoldPoint
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-
-        if (rb) rb.isKinematic = true; // Asegurar que no se caiga por gravedad mientras se tiene
     }
 
     public void OnDrop()
     {
         isHeld = false;
         isInspecting = false;
+
         transform.SetParent(null);
         if (rb) rb.isKinematic = false;
     }
 }
+

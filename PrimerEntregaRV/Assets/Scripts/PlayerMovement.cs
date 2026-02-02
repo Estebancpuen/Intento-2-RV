@@ -25,37 +25,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-
-        if (characterController == null || !characterController.enabled) return;
-
-        PickUpItem doll = Object.FindFirstObjectByType<PickUpItem>();
-        if (doll != null && doll.isInspecting)
+        // 1. Si estamos inspeccionando, rotamos el objeto y salimos
+        PlayerInteraction interaction = GetComponent<PlayerInteraction>();
+        if (interaction != null && interaction.IsInspecting())
         {
-            // Opcional: Liberar el cursor para que no se mueva la cámara pero sí la muñeca
-            Cursor.lockState = CursorLockMode.Locked; // Mantener bloqueado para rotación
-            Cursor.visible = false;
             return;
         }
 
-        // Si no estamos inspeccionando, volvemos a bloquear el cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // 1. ROTACIÓN
+        // 2. ROTACIÓN DE CÁMARA (Debe ir ANTES del check del characterController)
         float mouseX = Input.GetAxis("Mouse X") * lookSpeed;
         float mouseY = Input.GetAxis("Mouse Y") * lookSpeed;
 
-
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-
-        // Rotación vertical de la cámara
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-
-        // Rotación horizontal del cuerpo (CON R MAYÚSCULA)
         transform.Rotate(Vector3.up * mouseX);
 
-        // 2. MOVIMIENTO
+        // 3. MOVIMIENTO (Solo si el controller está activo)
+        if (characterController == null || !characterController.enabled) return;
+
         HandleMovement();
     }
 
@@ -95,4 +83,5 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
+
 }
