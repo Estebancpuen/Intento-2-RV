@@ -15,15 +15,13 @@ public class PianoManager : MonoBehaviour
     public bool puzzleSolved = false;
 
     public bool autoPlaying = true;
-    public float autoPlayDelay = 1.2f; // tiempo entre notas
+    public float autoPlayDelay = 0.8f; // tiempo entre notas
 
     public List<int> autoSequence = new List<int>();
     public int numberOfAutoNotes = 6;
     [Header("Piano Físico")]
 
-    
-    public float keyPressDepth = 0.01f;
-    public float keyReturnSpeed = 6f;
+   
     [Header("Teclas del Piano")]
     public List<PianoKey> pianoKeys = new List<PianoKey>();
 
@@ -54,13 +52,6 @@ public class PianoManager : MonoBehaviour
         }
     }
 
-    void PlayKeySound(int index)
-    {
-        if (index < 0 || index >= keySounds.Count) return;
-
-        if (keySounds[index] != null)
-            keySounds[index].Play();
-    }
 
     IEnumerator AutoPlayRoutine()
     {
@@ -79,39 +70,6 @@ public class PianoManager : MonoBehaviour
         }
     }
 
-    void AnimateKeyPress(int index)
-    {
-        if (index < 0 || index >= pianoKeys.Count) return;
-
-        Transform key = pianoKeys[index];
-        StartCoroutine(KeyPressRoutine(key));
-    }
-
-    IEnumerator KeyPressRoutine(Transform key)
-    {
-        Vector3 startPos = key.localPosition;
-        Vector3 pressedPos = startPos + Vector3.down * keyPressDepth;
-
-        float t = 0;
-
-        // Bajar
-        while (t < 1)
-        {
-            t += Time.deltaTime * keyReturnSpeed;
-            key.localPosition = Vector3.Lerp(startPos, pressedPos, t);
-            yield return null;
-        }
-
-        t = 0;
-
-        // Subir
-        while (t < 1)
-        {
-            t += Time.deltaTime * keyReturnSpeed;
-            key.localPosition = Vector3.Lerp(pressedPos, startPos, t);
-            yield return null;
-        }
-    }
 
     public void OnPlayerSit()
     {
@@ -124,16 +82,17 @@ public class PianoManager : MonoBehaviour
     {
         autoPlaying = true;
 
-        // últimas notas lentas y tensas
         for (int i = 0; i < 3; i++)
         {
-            int key = Random.Range(0, pianoKeys.Count);
-            PlayKeySound(key);
-            AnimateKeyPress(key);
+            int index = Random.Range(0, pianoKeys.Count);
+
+            // 👻 Ahora la tecla se presiona sola correctamente
+            pianoKeys[index].Press(true);
+
             yield return new WaitForSeconds(1.5f);
         }
 
-        autoPlaying = false; // 🎹 ahora sí, turno del jugador
+        autoPlaying = false; // turno del jugador
     }
 
 

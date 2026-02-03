@@ -297,7 +297,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18.200012, y: 0}
+  m_AnchoredPosition: {x: 18.200073, y: 0}
   m_SizeDelta: {x: -1500.86, y: -1169.148}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &21155965
@@ -1632,12 +1632,12 @@ MonoBehaviour:
   isInspecting: 0
   inspectionOffset: {x: 0, y: 0, z: 0.2}
   rotationSpeed: 100
-  holdOffset: {x: 0, y: -0.35, z: 0.6}
-  inspectionRotationEuler: {x: 15, y: 90, z: 0}
-  zoomAmount: 0.04
-  zoomSpeed: 6
+  inspectStartRotationEuler: {x: 0, y: 90, z: 0}
+  zoomAmount: 0.02
+  zoomSpeed: 4
   possessedShakeAmount: 0.002
   possessedShakeSpeed: 3
+  returnSpeed: 5
 --- !u!65 &425539151
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4957,7 +4957,19 @@ MonoBehaviour:
   - {fileID: 2021861291}
   - {fileID: 583381993}
   - {fileID: 1732271266}
-  maxNotesBeforeEscape: 2
+  puzzleSolved: 0
+  autoPlaying: 1
+  autoPlayDelay: 1.2
+  autoSequence: 
+  numberOfAutoNotes: 6
+  pianoKeys: []
+  keyPressDepth: 0.01
+  keyReturnSpeed: 6
+  keySounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1116562773
 Transform:
   m_ObjectHideFlags: 0
