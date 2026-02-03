@@ -22,5 +22,6 @@ public class SeatLogic : MonoBehaviour
 
         pianoManager.dollIsSeated = true;
         pianoManager.puzzleSolved = false; // 👈 RESETEA EL PUZZLE
+        pianoManager.OnPlayerSit();
     }
 }
