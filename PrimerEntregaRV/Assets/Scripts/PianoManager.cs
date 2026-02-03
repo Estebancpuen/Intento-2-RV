@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PianoManager : MonoBehaviour
 {
@@ -11,8 +12,7 @@ public class PianoManager : MonoBehaviour
     public Transform dollSeatPoint;   // Arrastra el punto del cilindro pequeño
     public GameObject dollNPC;
     public Transform[] spawnPoints;
-    [Header("Límite de intentos")]
-    public int maxNotesBeforeEscape = 2;
+   
 
     public void RegisterKeyPress(string noteName)
     {
@@ -23,46 +23,45 @@ public class PianoManager : MonoBehaviour
         }
 
         playerInput.Add(noteName);
+        Debug.Log("Input actual: " + string.Join(", ", playerInput));
 
-        Debug.Log("Nota tocada: " + noteName);
+        int currentIndex = playerInput.Count - 1;
 
-        // 🎯 Si aún no ha llegado al límite, no evaluamos todavía
-        if (playerInput.Count < maxNotesBeforeEscape)
+        // ❌ Si esta nota no coincide con la secuencia correcta → error
+        if (currentIndex >= correctSequence.Length ||
+            !playerInput[currentIndex].Trim().ToLower()
+            .Equals(correctSequence[currentIndex].Trim().ToLower()))
         {
+            Debug.Log("Nota incorrecta… la niña se fue.");
+            HandleMistake();
             return;
         }
 
-        // 🔍 Ahora sí evaluamos cuando ya tocó las 2 notas
-        bool sequenceCorrect = true;
-
-        for (int i = 0; i < correctSequence.Length; i++)
-        {
-            if (i >= playerInput.Count || playerInput[i] != correctSequence[i])
-            {
-                sequenceCorrect = false;
-                break;
-            }
-        }
-
-        if (sequenceCorrect)
+        // ✅ Si completó toda la secuencia correctamente
+        if (playerInput.Count == correctSequence.Length)
         {
             Debug.Log("¡Secuencia correcta, puerta abierta!");
-        }
-        else
-        {
-            Debug.Log("Secuencia incorrecta… la niña se fue.");
-            HandleMistake();
+            playerInput.Clear();
         }
     }
 
 
 
+
+
     void HandleMistake()
     {
-        Debug.Log("Secuencia incorrecta… la niña se asustó.");
-
         playerInput.Clear();
         dollIsSeated = false;
+
+        StartCoroutine(MistakeSequence());
+    }
+
+    IEnumerator MistakeSequence()
+    {
+        DollGlitch glitch = dollNPC.GetComponent<DollGlitch>();
+        if (glitch != null)
+            yield return StartCoroutine(glitch.GlitchBeforeTeleport());
 
         TeleportDoll();
     }
