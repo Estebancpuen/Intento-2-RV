@@ -12,39 +12,39 @@ public class PianoManager : MonoBehaviour
     public Transform dollSeatPoint;   // Arrastra el punto del cilindro pequeño
     public GameObject dollNPC;
     public Transform[] spawnPoints;
-   
+    public bool puzzleSolved = false;
+
 
     public void RegisterKeyPress(string noteName)
     {
-        if (!dollIsSeated)
-        {
-            Debug.Log("La muñeca no está mirando, el puzzle no avanza.");
+        if (!dollIsSeated || puzzleSolved)
             return;
-        }
 
         playerInput.Add(noteName);
-        Debug.Log("Input actual: " + string.Join(", ", playerInput));
 
         int currentIndex = playerInput.Count - 1;
 
-        // ❌ Si esta nota no coincide con la secuencia correcta → error
-        if (currentIndex >= correctSequence.Length ||
-            !playerInput[currentIndex].Trim().ToLower()
-            .Equals(correctSequence[currentIndex].Trim().ToLower()))
+        string pressed = noteName.Trim().ToLower();
+        string expected = correctSequence[currentIndex].Trim().ToLower();
+
+        Debug.Log("Nota presionada: " + pressed + " | Esperada: " + expected);
+
+        // ❌ Si se equivoca en cualquier punto
+        if (pressed != expected)
         {
             Debug.Log("Nota incorrecta… la niña se fue.");
             HandleMistake();
             return;
         }
 
-        // ✅ Si completó toda la secuencia correctamente
+        // ✅ Si completó TODA la secuencia correctamente
         if (playerInput.Count == correctSequence.Length)
         {
+            puzzleSolved = true;
             Debug.Log("¡Secuencia correcta, puerta abierta!");
             playerInput.Clear();
         }
     }
-
 
 
 

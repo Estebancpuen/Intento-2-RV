@@ -9,11 +9,8 @@ public class PickUpItem : MonoBehaviour
     public Vector3 inspectionOffset = new Vector3(0, 0, 0.4f);
     public float rotationSpeed = 600f;
 
-    [Header("Sujetar en brazos")]
-    public Vector3 holdOffset = new Vector3(0f, -0.35f, 0.6f);
-
-    [Tooltip("Rotación inicial al inspeccionar (para que el frente del modelo mire a la cámara)")]
-    public Vector3 inspectionRotationEuler = new Vector3(0f, 180f, 0f);
+    [Tooltip("Rotación inicial al inspeccionar")]
+    public Vector3 inspectStartRotationEuler = new Vector3(0f, 180f, 0f);
 
     [Header("Zoom al interactuar")]
     public float zoomAmount = 0.08f;
@@ -23,6 +20,10 @@ public class PickUpItem : MonoBehaviour
     public float possessedShakeAmount = 0.00015f;
     public float possessedShakeSpeed = 12f;
 
+    [Header("Regreso automático")]
+    public float returnSpeed = 5f;
+
+    private Quaternion initialInspectRotation;
     private Rigidbody rb;
 
     void Start()
@@ -36,7 +37,7 @@ public class PickUpItem : MonoBehaviour
 
         bool rotating = Input.GetMouseButton(0);
 
-        // ROTACIÓN solo con click
+        // 🎯 ROTACIÓN CON CLICK
         if (rotating)
         {
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
@@ -45,41 +46,34 @@ public class PickUpItem : MonoBehaviour
             transform.Rotate(Vector3.up, -rotX, Space.World);
             transform.Rotate(Vector3.right, rotY, Space.World);
         }
+        else
+        {
+            // Regresar a rotación inicial
+            transform.localRotation = Quaternion.Slerp(
+                transform.localRotation,
+                initialInspectRotation,
+                returnSpeed * Time.deltaTime
+            );
+        }
 
-        // ZOOM SUAVE
+        // 🎥 POSICIÓN BASE + ZOOM
         Vector3 targetPos = inspectionOffset;
-
         if (rotating)
-            targetPos += new Vector3(0, 0, -zoomAmount); // se acerca a cámara
+            targetPos += new Vector3(0, 0, -zoomAmount);
+
+        // 👻 TEMBLOR POSEÍDO
+        float shakeX = Mathf.Sin(Time.time * possessedShakeSpeed) * possessedShakeAmount;
+        float shakeY = Mathf.Cos(Time.time * possessedShakeSpeed * 1.2f) * possessedShakeAmount;
+
+        targetPos += new Vector3(shakeX, shakeY, 0);
 
         transform.localPosition = Vector3.Lerp(
             transform.localPosition,
             targetPos,
             zoomSpeed * Time.deltaTime
         );
-
-        if (isInspecting)
-        {
-            // Temblor poseído
-            float shakeX = Mathf.Sin(Time.time * possessedShakeSpeed) * possessedShakeAmount;
-            float shakeY = Mathf.Cos(Time.time * possessedShakeSpeed * 1.2f) * possessedShakeAmount;
-
-            transform.localPosition = inspectionOffset + new Vector3(shakeX, shakeY, 0);
-
-            // Rotación SOLO si el jugador mantiene click
-            if (Input.GetMouseButton(0))
-            {
-                float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
-                float rotY = Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime;
-
-                transform.Rotate(Vector3.up, -rotX, Space.World);
-                transform.Rotate(Vector3.right, rotY, Space.World);
-            }
-        }
     }
 
-
-    // 🔎 MODO INSPECCIÓN
     public void OnInspect(Transform cameraTransform)
     {
         isInspecting = true;
@@ -89,10 +83,11 @@ public class PickUpItem : MonoBehaviour
 
         transform.SetParent(cameraTransform);
         transform.localPosition = inspectionOffset;
-        transform.localRotation = Quaternion.Euler(inspectionRotationEuler);
+
+        initialInspectRotation = Quaternion.Euler(inspectStartRotationEuler);
+        transform.localRotation = initialInspectRotation;
     }
 
-    // ✋ MODO CARGANDO (EN BRAZOS)
     public void OnPickup(Transform holdPoint)
     {
         isInspecting = false;
@@ -101,8 +96,6 @@ public class PickUpItem : MonoBehaviour
         if (rb) rb.isKinematic = true;
 
         transform.SetParent(holdPoint);
-
-        // IMPORTANTE: posición EXACTA del HoldPoint
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
     }
@@ -116,4 +109,5 @@ public class PickUpItem : MonoBehaviour
         if (rb) rb.isKinematic = false;
     }
 }
+
 
