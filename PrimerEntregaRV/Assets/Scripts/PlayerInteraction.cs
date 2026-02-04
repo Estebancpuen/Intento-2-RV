@@ -176,7 +176,15 @@ public class PlayerInteraction : MonoBehaviour
 
     public void ResetHeldItem()
     {
-        heldItem = null;
+        if (heldItem != null)
+        {
+            Rigidbody rb = heldItem.GetComponent<Rigidbody>();
+            if (rb != null)
+                rb.isKinematic = false;
+
+            heldItem.transform.SetParent(null);
+            heldItem = null;
+        }
     }
 
     public bool IsInspecting()
@@ -184,11 +192,7 @@ public class PlayerInteraction : MonoBehaviour
         return heldItem != null && heldItem.isInspecting;
     }
 
-    // Función para verificar si el jugador está sentado y tiene a la muñeca
-    bool isSeatedConMuñecaEnMano()
-    {
-        return isSeated && heldItem != null;
-    }
+   
 
     void HandleInspectFade()
     {

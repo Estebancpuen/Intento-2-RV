@@ -15,7 +15,7 @@ public class PianoManager : MonoBehaviour
     public bool puzzleSolved = false;
 
     public bool autoPlaying = true;
-    public float autoPlayDelay = 0.8f; // tiempo entre notas
+    public float autoPlayDelay = 0.5f; // tiempo entre notas
 
     public List<int> autoSequence = new List<int>();
     public int numberOfAutoNotes = 6;
@@ -25,6 +25,8 @@ public class PianoManager : MonoBehaviour
     [Header("Teclas del Piano")]
     public List<PianoKey> pianoKeys = new List<PianoKey>();
 
+    public DollStateManager dollState;
+
 
 
 
@@ -32,6 +34,7 @@ public class PianoManager : MonoBehaviour
     {
         GenerateAutoSequence();
         StartCoroutine(AutoPlayRoutine());
+        
     }
 
 
@@ -134,6 +137,9 @@ public class PianoManager : MonoBehaviour
     {
         playerInput.Clear();
         dollIsSeated = false;
+
+        if (dollState != null)
+            dollState.RegisterMistake(); // 👈 AQUÍ pierde una parte
 
         StartCoroutine(MistakeSequence());
     }

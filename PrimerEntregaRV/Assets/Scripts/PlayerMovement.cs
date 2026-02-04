@@ -84,4 +84,19 @@ public class PlayerMovement : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rb = hit.collider.attachedRigidbody;
+
+        if (rb == null || rb.isKinematic) return;
+
+        // Dirección basada en el movimiento real del jugador
+        Vector3 pushDir = new Vector3(characterController.velocity.x, 0, characterController.velocity.z);
+
+        if (pushDir.magnitude < 0.1f) return; // evita empujones fantasmas
+
+        rb.AddForce(pushDir.normalized * 0.2f, ForceMode.Impulse);
+    }
+
 }
