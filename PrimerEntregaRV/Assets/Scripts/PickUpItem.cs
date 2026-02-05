@@ -26,6 +26,14 @@ public class PickUpItem : MonoBehaviour
     private Quaternion initialInspectRotation;
     private Rigidbody rb;
 
+
+    [Header("Solo objetos inspeccionables (ej: libro)")]
+    public bool returnToOriginalPlace = false;
+    public Transform originalPlacePoint;
+
+    private bool returning = false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,11 +41,44 @@ public class PickUpItem : MonoBehaviour
 
     void Update()
     {
+
+ 
+
+        // 🔁 MOVIMIENTO DE REGRESO (PRIMERO)
+        if (returning && originalPlacePoint != null)
+        {
+            transform.position = Vector3.Lerp(
+                transform.position,
+                originalPlacePoint.position,
+                returnSpeed * Time.deltaTime
+            );
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                originalPlacePoint.rotation,
+                returnSpeed * Time.deltaTime
+            );
+
+            if (Vector3.Distance(transform.position, originalPlacePoint.position) < 0.01f)
+            {
+                transform.position = originalPlacePoint.position;
+                transform.rotation = originalPlacePoint.rotation;
+                transform.SetParent(null);
+
+                if (rb) rb.isKinematic = true;
+
+                returning = false;
+            }
+
+            return; // ⛔ no ejecutar lógica de inspección mientras regresa
+        }
+
+        // 👁 SOLO si está inspeccionando
         if (!isInspecting) return;
 
         bool rotating = Input.GetMouseButton(0);
 
-        // 🎯 ROTACIÓN CON CLICK
+        // 🎯 ROTACIÓN
         if (rotating)
         {
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
@@ -48,7 +89,6 @@ public class PickUpItem : MonoBehaviour
         }
         else
         {
-            // Regresar a rotación inicial
             transform.localRotation = Quaternion.Slerp(
                 transform.localRotation,
                 initialInspectRotation,
@@ -56,12 +96,11 @@ public class PickUpItem : MonoBehaviour
             );
         }
 
-        // 🎥 POSICIÓN BASE + ZOOM
+        // 🎥 POSICIÓN
         Vector3 targetPos = inspectionOffset;
         if (rotating)
             targetPos += new Vector3(0, 0, -zoomAmount);
 
-        // 👻 TEMBLOR POSEÍDO
         float shakeX = Mathf.Sin(Time.time * possessedShakeSpeed) * possessedShakeAmount;
         float shakeY = Mathf.Cos(Time.time * possessedShakeSpeed * 1.2f) * possessedShakeAmount;
 
@@ -73,6 +112,7 @@ public class PickUpItem : MonoBehaviour
             zoomSpeed * Time.deltaTime
         );
     }
+
 
     public void OnInspect(Transform cameraTransform)
     {
@@ -106,7 +146,33 @@ public class PickUpItem : MonoBehaviour
         isInspecting = false;
 
         transform.SetParent(null);
-        if (rb) rb.isKinematic = false;
+
+        if (rb)
+            rb.isKinematic = false;
+    }
+
+
+    public void FinishInspection()
+    {
+        isInspecting = false;
+        isHeld = false;
+
+        // 🔥 SOLTAR DEL PADRE ANTES DE REGRESAR
+        transform.SetParent(null);
+
+        if (!returnToOriginalPlace || originalPlacePoint == null)
+        {
+            OnDrop();
+            return;
+        }
+
+        if (rb) rb.isKinematic = true; // que no interfiera la física
+        returning = true;
+    }
+
+    public bool IsBusy()
+    {
+        return isInspecting || returning;
     }
 }
 

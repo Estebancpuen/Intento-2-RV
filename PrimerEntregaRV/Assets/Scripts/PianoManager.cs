@@ -27,6 +27,9 @@ public class PianoManager : MonoBehaviour
 
     public DollStateManager dollState;
 
+    [Header("Puerta de salida")]
+    public DoorController doorController;
+
 
 
 
@@ -125,8 +128,13 @@ public class PianoManager : MonoBehaviour
         if (playerInput.Count == correctSequence.Length)
         {
             puzzleSolved = true;
+            doorController.DesbloquearPuerta();
+            GameManager.instance.Victoria();
+            // Reemplazar el uso obsoleto de FindObjectOfType con FindFirstObjectByType
+            FindFirstObjectByType<FlickerLightOnWin>().StartFlicker();
             Debug.Log("¡Secuencia correcta, puerta abierta!");
             playerInput.Clear();
+
         }
     }
 

@@ -29,6 +29,7 @@ public class DollStateManager : MonoBehaviour
             case 4:
                 RemoveLimb(rightLeg);
                 TriggerGameOver();
+                GameManager.instance.GameOver();
                 break;
         }
     }

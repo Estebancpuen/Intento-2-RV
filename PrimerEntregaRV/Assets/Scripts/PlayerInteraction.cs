@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -12,9 +12,11 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerMovement movementScript;
     private CharacterController characterController;
 
-    [Header("UI Inspección")]
+    [Header("UI InspecciÃ³n")]
     public CanvasGroup inspectFadePanel;
     public float fadeSpeed = 5f;
+
+    private PickUpItem lookedItem;
 
     void Start()
     {
@@ -27,13 +29,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         HandleRaycast();
 
-        // Interacción principal con E
+        // InteracciÃ³n principal con E
         if (Input.GetKeyDown(KeyCode.E))
         {
+
             ExecuteInteraction();
         }
 
-        // Tocar con el click izquierdo si está sentado
+        // Tocar con el click izquierdo si estÃ¡ sentado
         if (Input.GetMouseButtonDown(0) && isSeated)
         {
             TryTouchPiano();
@@ -54,7 +57,7 @@ public class PlayerInteraction : MonoBehaviour
             if (hit.collider.GetComponent<PianoKey>() ||
                 hit.collider.GetComponent<PickUpItem>() ||
                 hit.collider.CompareTag("AsientoJugador") ||
-                hit.collider.CompareTag("AsientoMuñeca"))
+                hit.collider.CompareTag("AsientoMuÃ±eca"))
             {
                 hitSomething = true;
                 Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
@@ -77,9 +80,19 @@ public class PlayerInteraction : MonoBehaviour
 
         if (heldItem != null && heldItem.isInspecting)
         {
-            heldItem.OnPickup(holdPoint);
+            // Si es un objeto que debe volver a su lugar (libro)
+            if (heldItem.returnToOriginalPlace)
+            {
+                heldItem.FinishInspection(); // ðŸ’¥ ACTIVA el regreso automÃ¡tico
+                heldItem = null; // ya no lo estamos sosteniendo
+            }
+            else
+            {
+                // Objeto normal (muÃ±eca) vuelve a la mano
+                heldItem.OnPickup(holdPoint);
+            }
+
             movementScript.canMove = true;
-            Debug.Log("Muñeca ahora está sostenida.");
             return;
         }
 
@@ -99,7 +112,7 @@ public class PlayerInteraction : MonoBehaviour
 
             // 3. AGARRAR / INSPECCIONAR (Solo si no tenemos nada)
             PickUpItem item = hit.collider.GetComponent<PickUpItem>();
-            if (item != null && heldItem == null && !isSeated)
+            if (item != null && heldItem == null && !isSeated && !item.IsBusy())
             {
                 heldItem = item;
                 item.OnInspect(playerCam.transform);
@@ -107,8 +120,8 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            // 4. SENTAR A LA MUÑECA (Solo si ya la tenemos en la mano)
-            if (isSeated && heldItem != null && heldItem.isHeld && hit.collider.CompareTag("AsientoMuñeca"))
+            // 4. SENTAR A LA MUÃ‘ECA (Solo si ya la tenemos en la mano)
+            if (isSeated && heldItem != null && heldItem.isHeld && hit.collider.CompareTag("AsientoMuÃ±eca"))
             {
                 PlaceDollOnSeat(hit.collider.gameObject);
                 return;
@@ -130,7 +143,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    // Función auxiliar para el click del ratón
+    // FunciÃ³n auxiliar para el click del ratÃ³n
     void TryTouchPiano()
     {
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
