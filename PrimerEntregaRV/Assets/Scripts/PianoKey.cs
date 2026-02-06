@@ -11,6 +11,11 @@ public class PianoKey : MonoBehaviour
     private bool isPressing = false;
     public float pressDepth = 0.05f;
 
+    [Header("Materiales")]
+    public MeshRenderer keyRenderer;
+    public Material normalMaterial;
+    public Material pressedMaterial;
+
     private PianoManager pianoManager;
 
     void Start()
@@ -36,20 +41,30 @@ public class PianoKey : MonoBehaviour
     {
         isPressing = true;
 
+        // 🎨 Cambiar a material presionado
+        if (keyRenderer != null && pressedMaterial != null)
+            keyRenderer.material = pressedMaterial;
+
         // 🔊 Sonido
         if (noteSound != null)
             audioSource.Play();
 
-        // 🎯 SOLO avisamos al PianoManager si fue el jugador
+        // 🎯 Solo contar si es el jugador
         if (!fromAutoPlay)
             pianoManager.RegisterKeyPress(noteName);
 
-        // Movimiento visual
+        // ⬇ Movimiento hacia abajo
         transform.localPosition = originalPosition + new Vector3(0, -pressDepth, 0);
 
         yield return new WaitForSeconds(0.15f);
 
+        // ⬆ Regresa a posición
         transform.localPosition = originalPosition;
+
+        // 🎨 Volver al material normal
+        if (keyRenderer != null && normalMaterial != null)
+            keyRenderer.material = normalMaterial;
+
         isPressing = false;
     }
 

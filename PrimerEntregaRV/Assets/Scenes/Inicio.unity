@@ -600,6 +600,9 @@ MonoBehaviour:
   noteName: T_6
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 138687253}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &149092329
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,6 +731,9 @@ MonoBehaviour:
   noteName: T_2
   noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 149092331}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &157712913
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +862,9 @@ MonoBehaviour:
   noteName: T14
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 157712915}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &175666718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1754,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 53162997}
+  - {fileID: 1597576570}
   m_Father: {fileID: 2104315217}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -1949,6 +1959,9 @@ MonoBehaviour:
   noteName: T13
   noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 357003219}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &394711117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2090,9 @@ MonoBehaviour:
   noteName: T_7
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 394711119}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &409551105
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,6 +2221,9 @@ MonoBehaviour:
   noteName: T_5
   noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 409551107}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &425539148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,6 +2860,9 @@ MonoBehaviour:
   noteName: T12
   noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 539375808}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &583381992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3211,9 @@ MonoBehaviour:
   noteName: T_9
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 675102110}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &741091774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3504,9 @@ MonoBehaviour:
   noteName: T11
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 804782589}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &809077469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3683,6 +3711,9 @@ MonoBehaviour:
   noteName: T1
   noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 838750133}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &857396625
 GameObject:
   m_ObjectHideFlags: 0
@@ -3925,6 +3956,9 @@ MonoBehaviour:
   noteName: T_1
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 860802220}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &862136593
 GameObject:
   m_ObjectHideFlags: 0
@@ -4299,6 +4333,9 @@ MonoBehaviour:
   noteName: T15
   noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 894512372}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &907688915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6160,6 +6197,9 @@ MonoBehaviour:
   noteName: T8
   noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1315923822}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1345509289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,6 +6328,9 @@ MonoBehaviour:
   noteName: T9
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1345509291}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1346771757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6845,6 +6888,9 @@ MonoBehaviour:
   noteName: T2
   noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1406448180}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1408985130
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,6 +7019,9 @@ MonoBehaviour:
   noteName: T_11
   noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1408985132}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1424681882
 GameObject:
   m_ObjectHideFlags: 0
@@ -7370,6 +7419,9 @@ MonoBehaviour:
   noteName: T7
   noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1546126012}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1550476348
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,6 +7550,9 @@ MonoBehaviour:
   noteName: T5
   noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1550476350}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!64 &1552162838
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7904,6 +7959,133 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586978531}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1597576569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597576570}
+  - component: {fileID: 1597576572}
+  - component: {fileID: 1597576571}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597576570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597576569}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0033000002, y: -0.010800013, z: -0.045}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 330585546}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1597576571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597576569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
+--- !u!108 &1597576572
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597576569}
+  m_Enabled: 1
+  serializedVersion: 12
+  m_Type: 0
+  m_Color: {r: 0.7155031, g: 0.7830189, b: 0.36565503, a: 1}
+  m_Intensity: 0.18
+  m_Range: 21.78
+  m_SpotAngle: 65.08462
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!1 &1624441479
 GameObject:
   m_ObjectHideFlags: 0
@@ -8278,6 +8460,9 @@ MonoBehaviour:
   noteName: T4
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1815168334}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1815625824
 GameObject:
   m_ObjectHideFlags: 0
@@ -8406,6 +8591,9 @@ MonoBehaviour:
   noteName: T10
   noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1815625826}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1821364340
 GameObject:
   m_ObjectHideFlags: 0
@@ -8930,6 +9118,9 @@ MonoBehaviour:
   noteName: T_8
   noteSound: {fileID: 8300000, guid: 5a53776704cd4ff46bfe7e406d7b4462, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1851403228}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1855968339
 GameObject:
   m_ObjectHideFlags: 0
@@ -9058,6 +9249,9 @@ MonoBehaviour:
   noteName: T_3
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1855968341}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1864947991
 GameObject:
   m_ObjectHideFlags: 0
@@ -9412,6 +9606,9 @@ MonoBehaviour:
   noteName: T16
   noteSound: {fileID: 8300000, guid: c1ca581c1faa9c34e96447ab1065a404, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1883213168}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1918820000
 GameObject:
   m_ObjectHideFlags: 0
@@ -9540,6 +9737,9 @@ MonoBehaviour:
   noteName: T_4
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 1918820002}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &1931225378
 GameObject:
   m_ObjectHideFlags: 0
@@ -10069,6 +10269,9 @@ MonoBehaviour:
   noteName: T6
   noteSound: {fileID: 8300000, guid: 2ec4d9f70ee1c134cafd153d031af7aa, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 2001886215}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &2021861290
 GameObject:
   m_ObjectHideFlags: 0
@@ -10228,6 +10431,9 @@ MonoBehaviour:
   noteName: T_10
   noteSound: {fileID: 8300000, guid: f62c5b702338bef4e948bc1a7a30b4f2, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 2047742165}
+  normalMaterial: {fileID: 2100000, guid: 1ae77ddac7442fd40b3a16b3903d614b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!64 &2053362836
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10764,6 +10970,9 @@ MonoBehaviour:
   noteName: T3
   noteSound: {fileID: 8300000, guid: abce2cf15f15a514998ced43712f767a, type: 3}
   pressDepth: 0.05
+  keyRenderer: {fileID: 2109961150}
+  normalMaterial: {fileID: 2100000, guid: d9c79a7463370d2459df32fc6b59ab4b, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 3722f31109b9f844bade15b517dc0b01, type: 2}
 --- !u!1 &89106779248759798
 GameObject:
   m_ObjectHideFlags: 0
