@@ -20,8 +20,6 @@ public class PianoKey : MonoBehaviour
     void Start()
     {
         originalPosition = transform.localPosition;
-
-        
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = noteSound;
         audioSource.playOnAwake = false;
