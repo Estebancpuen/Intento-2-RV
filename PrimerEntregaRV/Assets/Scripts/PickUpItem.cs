@@ -5,29 +5,28 @@ public class PickUpItem : MonoBehaviour
     public bool isHeld = false;
     public bool isInspecting = false;
 
-    [Header("Inspección")]
     public Vector3 inspectionOffset = new Vector3(0, 0, 0.4f);
     public float rotationSpeed = 600f;
 
-    [Tooltip("Rotación inicial al inspeccionar")]
+    
     public Vector3 inspectStartRotationEuler = new Vector3(0f, 180f, 0f);
 
-    [Header("Zoom al interactuar")]
+    
     public float zoomAmount = 0.08f;
     public float zoomSpeed = 6f;
 
-    [Header("Efecto poseída")]
+    
     public float possessedShakeAmount = 0.00015f;
     public float possessedShakeSpeed = 12f;
 
-    [Header("Regreso automático")]
+    
     public float returnSpeed = 5f;
 
     private Quaternion initialInspectRotation;
     private Rigidbody rb;
 
 
-    [Header("Solo objetos inspeccionables (ej: libro)")]
+    
     public bool returnToOriginalPlace = false;
     public Transform originalPlacePoint;
 
@@ -43,8 +42,6 @@ public class PickUpItem : MonoBehaviour
     {
 
  
-
-        // 🔁 MOVIMIENTO DE REGRESO (PRIMERO)
         if (returning && originalPlacePoint != null)
         {
             transform.position = Vector3.Lerp(
@@ -70,15 +67,15 @@ public class PickUpItem : MonoBehaviour
                 returning = false;
             }
 
-            return; // ⛔ no ejecutar lógica de inspección mientras regresa
+            return; 
         }
 
-        // 👁 SOLO si está inspeccionando
+        
         if (!isInspecting) return;
 
         bool rotating = Input.GetMouseButton(0);
 
-        // 🎯 ROTACIÓN
+        
         if (rotating)
         {
             float rotX = Input.GetAxis("Mouse X") * rotationSpeed * Time.deltaTime;
@@ -96,7 +93,7 @@ public class PickUpItem : MonoBehaviour
             );
         }
 
-        // 🎥 POSICIÓN
+        
         Vector3 targetPos = inspectionOffset;
         if (rotating)
             targetPos += new Vector3(0, 0, -zoomAmount);
@@ -157,7 +154,7 @@ public class PickUpItem : MonoBehaviour
         isInspecting = false;
         isHeld = false;
 
-        // 🔥 SOLTAR DEL PADRE ANTES DE REGRESAR
+        
         transform.SetParent(null);
 
         if (!returnToOriginalPlace || originalPlacePoint == null)
@@ -166,7 +163,7 @@ public class PickUpItem : MonoBehaviour
             return;
         }
 
-        if (rb) rb.isKinematic = true; // que no interfiera la física
+        if (rb) rb.isKinematic = true;
         returning = true;
     }
 

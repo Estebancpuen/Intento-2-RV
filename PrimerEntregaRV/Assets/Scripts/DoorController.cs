@@ -12,12 +12,12 @@ public class DoorController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hinge = GetComponent<HingeJoint>();
 
-        LockDoor(); // 👈 Empieza bloqueada
+        LockDoor(); 
     }
 
     void LockDoor()
     {
-        rb.isKinematic = true;        // No se mueve
+        rb.isKinematic = true;       
         hinge.useLimits = true;
     }
 
@@ -27,8 +27,8 @@ public class DoorController : MonoBehaviour
 
         unlocked = true;
 
-        rb.isKinematic = false;       // Ahora sí tiene físicas
-        rb.AddForce(transform.forward * 2f, ForceMode.Impulse); // pequeño empujón
+        rb.isKinematic = false;       
+        rb.AddForce(transform.forward * 2f, ForceMode.Impulse); 
 
         Debug.Log("Puerta desbloqueada");
     }

@@ -2,8 +2,8 @@
 
 public class DoorMessageTrigger : MonoBehaviour
 {
-    public GameObject messagePanel; // Arrastras aquí el panel del Canvas
-    public DoorController door; // 👈 Arrastra aquí la puerta
+    public GameObject messagePanel; 
+    public DoorController door; 
 
     private void OnTriggerEnter(Collider other)
     {

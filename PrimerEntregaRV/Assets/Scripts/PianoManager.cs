@@ -7,27 +7,21 @@ public class PianoManager : MonoBehaviour
     public string[] correctSequence;
     private List<string> playerInput = new List<string>();
 
-    [Header("Asientos y Estados")]
-    public bool dollIsSeated = false; // El piano consultará esto
-    public Transform dollSeatPoint;   // Arrastra el punto del cilindro pequeño
+    
+    public bool dollIsSeated = false; 
+    public Transform dollSeatPoint;   
     public GameObject dollNPC;
     public Transform[] spawnPoints;
     public bool puzzleSolved = false;
 
     public bool autoPlaying = true;
-    public float autoPlayDelay = 0.5f; // tiempo entre notas
+    public float autoPlayDelay = 0.5f; 
 
     public List<int> autoSequence = new List<int>();
     public int numberOfAutoNotes = 6;
-    [Header("Piano Físico")]
 
-   
-    [Header("Teclas del Piano")]
     public List<PianoKey> pianoKeys = new List<PianoKey>();
-
     public DollStateManager dollState;
-
-    [Header("Puerta de salida")]
     public DoorController doorController;
 
 
@@ -69,7 +63,6 @@ public class PianoManager : MonoBehaviour
 
             int randomIndex = Random.Range(0, pianoKeys.Count);
 
-            // 👻 Presiona la tecla en modo automático
             pianoKeys[randomIndex].Press(true);
 
             yield return new WaitForSeconds(autoPlayDelay);
@@ -79,7 +72,7 @@ public class PianoManager : MonoBehaviour
 
     public void OnPlayerSit()
     {
-        StopAllCoroutines(); // corta lo que esté tocando
+        StopAllCoroutines();
         StartCoroutine(FinishAutoPlay());
         autoPlaying = false;
     }
@@ -92,13 +85,12 @@ public class PianoManager : MonoBehaviour
         {
             int index = Random.Range(0, pianoKeys.Count);
 
-            // 👻 Ahora la tecla se presiona sola correctamente
             pianoKeys[index].Press(true);
 
             yield return new WaitForSeconds(1.5f);
         }
 
-        autoPlaying = false; // turno del jugador
+        autoPlaying = false; 
     }
 
 
@@ -116,7 +108,6 @@ public class PianoManager : MonoBehaviour
 
         Debug.Log("Nota presionada: " + pressed + " | Esperada: " + expected);
 
-        // ❌ Si se equivoca en cualquier punto
         if (pressed != expected)
         {
             Debug.Log("Nota incorrecta… la niña se fue.");
@@ -124,13 +115,11 @@ public class PianoManager : MonoBehaviour
             return;
         }
 
-        // ✅ Si completó TODA la secuencia correctamente
         if (playerInput.Count == correctSequence.Length)
         {
             puzzleSolved = true;
             doorController.DesbloquearPuerta();
             GameManager.instance.Victoria();
-            // Reemplazar el uso obsoleto de FindObjectOfType con FindFirstObjectByType
             FindFirstObjectByType<FlickerLightOnWin>().StartFlicker();
             Debug.Log("¡Secuencia correcta, puerta abierta!");
             playerInput.Clear();
@@ -147,7 +136,7 @@ public class PianoManager : MonoBehaviour
         dollIsSeated = false;
 
         if (dollState != null)
-            dollState.RegisterMistake(); // 👈 AQUÍ pierde una parte
+            dollState.RegisterMistake();
 
         StartCoroutine(MistakeSequence());
     }
@@ -168,7 +157,6 @@ public class PianoManager : MonoBehaviour
         int randomIndex = Random.Range(0, spawnPoints.Length);
         Transform spawn = spawnPoints[randomIndex];
 
-        // Soltarla de cualquier estado (mano o asiento)
         PickUpItem itemScript = dollNPC.GetComponent<PickUpItem>();
         if (itemScript != null)
         {
@@ -179,7 +167,6 @@ public class PianoManager : MonoBehaviour
         dollNPC.transform.position = spawn.position;
         dollNPC.transform.rotation = spawn.rotation;
 
-        // Avisar al jugador que ya no la tiene
         PlayerInteraction player = Object.FindFirstObjectByType<PlayerInteraction>();
         if (player != null)
         {

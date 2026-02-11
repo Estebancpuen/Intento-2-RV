@@ -29,14 +29,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         HandleRaycast();
 
-        // Interacción principal con E
+       
         if (Input.GetKeyDown(KeyCode.E))
         {
 
             ExecuteInteraction();
         }
 
-        // Tocar con el click izquierdo si está sentado
+        
         if (Input.GetMouseButtonDown(0) && isSeated)
         {
             TryTouchPiano();
@@ -53,7 +53,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            // Verificamos si el objeto es interactuable
+            
             if (hit.collider.GetComponent<PianoKey>() ||
                 hit.collider.GetComponent<PickUpItem>() ||
                 hit.collider.CompareTag("AsientoJugador") ||
@@ -80,15 +80,15 @@ public class PlayerInteraction : MonoBehaviour
 
         if (heldItem != null && heldItem.isInspecting)
         {
-            // Si es un objeto que debe volver a su lugar (libro)
+           
             if (heldItem.returnToOriginalPlace)
             {
-                heldItem.FinishInspection(); // 💥 ACTIVA el regreso automático
-                heldItem = null; // ya no lo estamos sosteniendo
+                heldItem.FinishInspection(); 
+                heldItem = null; 
             }
             else
             {
-                // Objeto normal (muñeca) vuelve a la mano
+                
                 heldItem.OnPickup(holdPoint);
             }
 
@@ -102,7 +102,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
-            // 2. TECLAS DEL PIANO
+            
             PianoKey key = hit.collider.GetComponent<PianoKey>();
             if (key != null)
             {
@@ -110,7 +110,7 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            // 3. AGARRAR / INSPECCIONAR (Solo si no tenemos nada)
+            
             PickUpItem item = hit.collider.GetComponent<PickUpItem>();
             if (item != null && heldItem == null && !isSeated && !item.IsBusy())
             {
@@ -120,14 +120,14 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
 
-            // 4. SENTAR A LA MUÑECA (Solo si ya la tenemos en la mano)
+            
             if (isSeated && heldItem != null && heldItem.isHeld && hit.collider.CompareTag("AsientoMuñeca"))
             {
                 PlaceDollOnSeat(hit.collider.gameObject);
                 return;
             }
 
-            // 5. SENTARSE / LEVANTARSE EL JUGADOR
+            
             if (hit.collider.CompareTag("AsientoJugador") && !isSeated)
             {
                 SitDown(hit.collider.transform);
@@ -135,7 +135,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        // 6. LEVANTARSE
+       
         if (isSeated && (heldItem == null || !heldItem.isInspecting))
         {
             StandUp();
@@ -143,7 +143,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    // Función auxiliar para el click del ratón
+    
     void TryTouchPiano()
     {
         Ray ray = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

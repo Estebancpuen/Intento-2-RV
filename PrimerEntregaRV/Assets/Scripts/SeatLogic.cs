@@ -4,7 +4,7 @@ public class SeatLogic : MonoBehaviour
 {
     public PianoManager pianoManager;
 
-    // Ahora SOLO se llama manualmente
+   
     public void SitDoll()
     {
         pianoManager.dollIsSeated = true;
@@ -21,7 +21,7 @@ public class SeatLogic : MonoBehaviour
         Debug.Log("La niña fue colocada en el asiento correctamente.");
 
         pianoManager.dollIsSeated = true;
-        pianoManager.puzzleSolved = false; // 👈 RESETEA EL PUZZLE
+        pianoManager.puzzleSolved = false; 
         pianoManager.OnPlayerSit();
     }
 }
