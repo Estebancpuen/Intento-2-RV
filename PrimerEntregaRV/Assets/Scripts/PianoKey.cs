@@ -26,6 +26,15 @@ public class PianoKey : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = noteSound;
         audioSource.playOnAwake = false;
+
+        // --- CONFIGURACIÓN PARA SONIDO ESPACIAL ---
+        audioSource.spatialBlend = 1.0f; // 1.0 es 3D total, 0 es 2D
+        audioSource.rolloffMode = AudioRolloffMode.Logarithmic; // El volumen cae con la distancia
+        audioSource.minDistance = 0.01f;  // Se escucha al máximo a 1 metro
+        audioSource.maxDistance = 0.1f; // A los 10 metros ya no se escucha nada
+                                       // ------------------------------------------
+
+
         pianoManager = Object.FindFirstObjectByType<PianoManager>(); // Busca el manager en la escena
     }
 
