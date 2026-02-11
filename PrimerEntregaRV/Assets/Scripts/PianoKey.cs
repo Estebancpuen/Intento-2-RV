@@ -30,8 +30,8 @@ public class PianoKey : MonoBehaviour
         // --- CONFIGURACIÓN PARA SONIDO ESPACIAL ---
         audioSource.spatialBlend = 1.0f; // 1.0 es 3D total, 0 es 2D
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic; // El volumen cae con la distancia
-        audioSource.minDistance = 0.01f;  // Se escucha al máximo a 1 metro
-        audioSource.maxDistance = 0.1f; // A los 10 metros ya no se escucha nada
+        audioSource.minDistance = 0.02f;  // Se escucha al máximo a 1 metro
+        audioSource.maxDistance = 0.25f; // A los 10 metros ya no se escucha nada
                                        // ------------------------------------------
 
 
