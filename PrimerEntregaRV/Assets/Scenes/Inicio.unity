@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.29939377, g: 0.3018868, b: 0.2776789, a: 1}
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.386
   m_LinearFogStart: 0
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 90736410}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ReverdSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4542,7 +4542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907688915}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -26.610867, y: -9.0834055, z: 8.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9382,7 +9382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1912128113
 Transform:
   m_ObjectHideFlags: 0
@@ -12850,9 +12850,9 @@ SceneRoots:
   - {fileID: 543450651701701060}
   - {fileID: 594169319}
   - {fileID: 1116562773}
-  - {fileID: 907688917}
   - {fileID: 1006382088}
   - {fileID: 848021910}
   - {fileID: 1498316648}
   - {fileID: 1912128113}
+  - {fileID: 907688917}
   - {fileID: 90736410}
