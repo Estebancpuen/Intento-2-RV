@@ -1211,7 +1211,7 @@ Transform:
   m_GameObject: {fileID: 251351188}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.233, y: 0.555, z: -7.564}
+  m_LocalPosition: {x: 1.233, y: 0.555, z: -7.609}
   m_LocalScale: {x: 0.01408344, y: 0.56, z: 0.29731706}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1232,8 +1232,8 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585549}
   - component: {fileID: 330585548}
-  - component: {fileID: 330585550}
   - component: {fileID: 330585551}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1425,11 +1425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e6e6239322a5c40af2ae6443fddf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::camaraMano
-  positionStiffness: 156.1
-  positionDamping: 93.6
-  noiseAmplitude: 25
-  noiseSpeed: 8.58
-  driftStrength: 64
+  positionStiffness: 1.54
+  positionDamping: 0.37
+  noiseAmplitude: 0.38
+  noiseSpeed: 0.8
+  driftStrength: 5.6
 --- !u!1 &357003217
 GameObject:
   m_ObjectHideFlags: 0
