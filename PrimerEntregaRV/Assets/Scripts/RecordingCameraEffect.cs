@@ -36,8 +36,13 @@ public class RecordingCameraEffect : MonoBehaviour
     public CameraBob cameraBob;
     public camaraMano camaraMano;
 
+    Vector3 baseLocalPosition;
+
     void Start()
     {
+
+        baseLocalPosition = transform.localPosition;
+
         volume.profile.TryGet(out filmGrain);
         volume.profile.TryGet(out chromatic);
         volume.profile.TryGet(out colorAdjust);
@@ -61,7 +66,7 @@ public class RecordingCameraEffect : MonoBehaviour
 
         finalOffset += shakeOffset; // glitch + grabación
 
-        transform.localPosition = finalOffset;
+        transform.localPosition = baseLocalPosition + finalOffset;
     }
 
     void HandleShake()
