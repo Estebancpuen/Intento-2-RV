@@ -1288,37 +1288,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175666718}
   m_CullTransparentMesh: 1
---- !u!1 &186617572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 186617573}
-  m_Layer: 0
-  m_Name: MaloPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &186617573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186617572}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.006}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2104315217}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189729630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4066,12 +4035,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TerrorSoundManager
   player: {fileID: 2104315217}
   passingSounds:
-  - {fileID: 8300000, guid: 2f69ababcaca3eb4f884b38f1b23ef80, type: 3}
-  - {fileID: 8300000, guid: cf5fff07885c62440aef5dd813d4f9dd, type: 3}
-  - {fileID: 8300000, guid: b46a2618c28f0f44084aa8cf04f19cc3, type: 3}
-  - {fileID: 8300000, guid: 74b1bb8aa77c87342a8eb5299b8b21d5, type: 3}
-  - {fileID: 8300000, guid: 8035cf6865c7a9b4c84694d532655627, type: 3}
-  - {fileID: 8300000, guid: 3276ab87d0771d148a9e5efceb545efc, type: 3}
+  - {fileID: 8300000, guid: 0d24a022d9783d54296fcd43af79fc4c, type: 3}
+  - {fileID: 8300000, guid: 1c14fb4365e269d458b4522680f86761, type: 3}
+  - {fileID: 8300000, guid: 603efcf87716c7844900577184de9102, type: 3}
+  - {fileID: 8300000, guid: 03c8aa2434fb626488ce6b3eac2cf695, type: 3}
+  - {fileID: 8300000, guid: c18096ce4a34679418b08118bedcfc9e, type: 3}
+  - {fileID: 8300000, guid: c4e18824a1c375e4992deaed442d9d34, type: 3}
+  - {fileID: 8300000, guid: 88bdae2d307e4fb4ebff9c819ef3839a, type: 3}
   behindSounds:
   - {fileID: 8300000, guid: 545a36ba6c7a6dc4598dfca2fc1852af, type: 3}
   - {fileID: 8300000, guid: c3d892f43892c224bb16c2d8984d84a5, type: 3}
@@ -4735,11 +4705,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d89afa0a6d24dbd4c905ede643917c33, type: 3}
+  m_Resource: {fileID: 8300000, guid: ab7d5a25618c95741854eb4fd787299b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.629
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -4811,7 +4781,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -10746,7 +10716,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
-  - {fileID: 186617573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -181.36, z: 0}
 --- !u!143 &2104315218
