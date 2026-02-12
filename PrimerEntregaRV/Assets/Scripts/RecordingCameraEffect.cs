@@ -31,6 +31,11 @@ public class RecordingCameraEffect : MonoBehaviour
     ColorAdjustments colorAdjust;
     Vignette vignette;
 
+    [Header("External Offsets")]
+    public CameraShake cameraShake;
+    public CameraBob cameraBob;
+    public camaraMano camaraMano;
+
     void Start()
     {
         volume.profile.TryGet(out filmGrain);
@@ -49,7 +54,14 @@ public class RecordingCameraEffect : MonoBehaviour
         HandleNightVision();
 
         // 🔑 SOLO sumamos offset
-        transform.localPosition = shakeOffset;
+        Vector3 finalOffset = Vector3.zero;
+
+        if (cameraShake != null)
+            finalOffset += cameraShake.ShakeOffset;
+
+        finalOffset += shakeOffset; // glitch + grabación
+
+        transform.localPosition = finalOffset;
     }
 
     void HandleShake()

@@ -5,13 +5,9 @@ public class CameraShake : MonoBehaviour
     public float shakeIntensity = 0.1f;
     public float shakeSpeed = 20f;
 
-    private Vector3 originalPos;
-    private bool shaking;
+    public Vector3 ShakeOffset { get; private set; }
 
-    void Start()
-    {
-        originalPos = transform.localPosition;
-    }
+    private bool shaking;
 
     public void StartShake()
     {
@@ -21,17 +17,22 @@ public class CameraShake : MonoBehaviour
     public void StopShake()
     {
         shaking = false;
-        transform.localPosition = originalPos;
+        ShakeOffset = Vector3.zero;
     }
 
     void Update()
     {
-        if (!shaking) return;
+        if (!shaking)
+        {
+            ShakeOffset = Vector3.zero;
+            return;
+        }
 
         float x = Mathf.PerlinNoise(Time.time * shakeSpeed, 0) - 0.5f;
         float y = Mathf.PerlinNoise(0, Time.time * shakeSpeed) - 0.5f;
 
-        transform.localPosition = originalPos + new Vector3(x, y, 0) * shakeIntensity;
+        ShakeOffset = new Vector3(x, y, 0) * shakeIntensity;
     }
 }
+
 

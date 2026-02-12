@@ -1893,6 +1893,9 @@ MonoBehaviour:
   glitchChance: 0.006
   glitchIntensity: 0.08
   nightVision: 0
+  cameraShake: {fileID: 330585552}
+  cameraBob: {fileID: 330585549}
+  camaraMano: {fileID: 330585551}
 --- !u!114 &330585551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,8 +1925,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47fdc953c0cbba4c9e0a920e7897a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
-  shakeIntensity: 50
-  shakeSpeed: 50
+  shakeIntensity: 0.1
+  shakeSpeed: 10
 --- !u!1 &357003217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,7 +4489,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &907688916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4705,9 +4708,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: ab7d5a25618c95741854eb4fd787299b, type: 3}
+  m_Resource: {fileID: 8300000, guid: d89afa0a6d24dbd4c905ede643917c33, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.629
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4715,8 +4718,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.48
-  MaxDistance: 1.19
+  MinDistance: 0.7184696
+  MaxDistance: 1.716547
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -7316,15 +7319,15 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 130e7e93025e59e4890bbf0d832d9ec4, type: 3}
+  m_Resource: {fileID: 8300000, guid: ab7d5a25618c95741854eb4fd787299b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.659
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 169
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -7411,7 +7414,7 @@ Transform:
   m_GameObject: {fileID: 1498316646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.826, y: -0, z: -13.932}
+  m_LocalPosition: {x: 0.826, y: -0, z: -14.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
