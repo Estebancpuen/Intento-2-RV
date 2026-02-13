@@ -18006,7 +18006,7 @@ MonoBehaviour:
   randomMinTime: 25
   randomMaxTime: 60
   globalVolume: {fileID: 907688916}
-  fishEyeIntensity: -0.4
+  fishEyeIntensity: -0.6
   distortionInTime: 0.5
   distortionOutTime: 1
   handsAnimator: {fileID: 1640020993}
