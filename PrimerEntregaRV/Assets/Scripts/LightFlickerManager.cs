@@ -56,8 +56,7 @@ public class LightFlickerManager : MonoBehaviour
         if (flickerAudio && !flickerAudio.isPlaying)
             flickerAudio.Play();
 
-        if (particulas != null)
-            particulas.PlayFromLights();
+        
 
         if (cameraShake != null)
             cameraShake.StartShake();

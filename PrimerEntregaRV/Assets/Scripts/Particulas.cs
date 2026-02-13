@@ -12,8 +12,8 @@ public class Particulas : MonoBehaviour
     public float duration = 5f;
 
     [Header("Random Events")]
-    public float randomMinTime = 25f;
-    public float randomMaxTime = 60f;
+    public float randomMinTime = 40f;
+    public float randomMaxTime = 90f;
 
     bool isPlaying;
     Coroutine currentRoutine;
