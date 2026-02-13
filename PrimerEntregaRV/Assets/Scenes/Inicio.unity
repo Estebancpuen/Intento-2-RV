@@ -6864,7 +6864,7 @@ MonoBehaviour:
   maxFocalLength: 80
   focalIncreaseSpeed: 8
   focalDecreaseSpeed: 6
-  fatigueDelay: 4
+  fatigueDelay: 6
   buildupTime: 8
   recoverySpeed: 0.4
   maxBlurRadius: 10
@@ -9513,7 +9513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &907688916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18005,6 +18005,10 @@ MonoBehaviour:
   duration: 10
   randomMinTime: 25
   randomMaxTime: 60
+  globalVolume: {fileID: 907688916}
+  fishEyeIntensity: -0.4
+  distortionInTime: 0.5
+  distortionOutTime: 1
   handsAnimator: {fileID: 1640020993}
 --- !u!1 &1572757618
 GameObject:

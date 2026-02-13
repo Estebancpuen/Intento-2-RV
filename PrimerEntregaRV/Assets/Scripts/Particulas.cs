@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
 
 public class Particulas : MonoBehaviour
 {
@@ -15,6 +18,16 @@ public class Particulas : MonoBehaviour
     public float randomMinTime = 40f;
     public float randomMaxTime = 90f;
 
+    [Header("Distorsión de cámara")]
+    [SerializeField] private Volume globalVolume;
+    [SerializeField] private float fishEyeIntensity = -0.4f;
+    [SerializeField] private float distortionInTime = 0.5f;
+    [SerializeField] private float distortionOutTime = 1f;
+
+    private LensDistortion lensDistortion;
+
+
+
     [SerializeField] private Animator handsAnimator;
 
     bool isPlaying;
@@ -28,7 +41,15 @@ public class Particulas : MonoBehaviour
         if (audioSource != null)
             audioSource.Stop();
 
+        if (globalVolume.profile.TryGet(out lensDistortion))
+        {
+            lensDistortion.intensity.value = 0f;
+        }
+
         StartCoroutine(RandomParticleRoutine());
+
+
+        
     }
 
     void Update()
@@ -68,6 +89,12 @@ public class Particulas : MonoBehaviour
         if (audioSource != null)
             audioSource.Play();
 
+        if (lensDistortion != null)
+            StartCoroutine(FishEyeEffect(fishEyeIntensity));
+
+
+
+
         yield return new WaitForSeconds(duration);
 
         StopParticles();
@@ -84,6 +111,11 @@ public class Particulas : MonoBehaviour
         if (handsAnimator != null)
             handsAnimator.SetBool("isSurprised", false);
 
+        if (lensDistortion != null)
+            StartCoroutine(ResetFishEye());
+
+
+
         isPlaying = false;
     }
 
@@ -97,6 +129,32 @@ public class Particulas : MonoBehaviour
 
             if (!isPlaying)
                 currentRoutine = StartCoroutine(PlayEvent());
+        }
+    }
+
+    IEnumerator FishEyeEffect(float target)
+    {
+        float startValue = lensDistortion.intensity.value;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / distortionInTime;
+            lensDistortion.intensity.value = Mathf.Lerp(startValue, target, t);
+            yield return null;
+        }
+    }
+
+    IEnumerator ResetFishEye()
+    {
+        float startValue = lensDistortion.intensity.value;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / distortionOutTime;
+            lensDistortion.intensity.value = Mathf.Lerp(startValue, 0f, t);
+            yield return null;
         }
     }
 
