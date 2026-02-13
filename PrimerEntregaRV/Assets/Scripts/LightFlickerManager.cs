@@ -25,6 +25,8 @@ public class LightFlickerManager : MonoBehaviour
     private float[] originalIntensities;
     private bool isRunning;
 
+    public Particulas particulas;
+
     void Start()
     {
         originalIntensities = new float[spotLights.Length];
@@ -54,23 +56,34 @@ public class LightFlickerManager : MonoBehaviour
         if (flickerAudio && !flickerAudio.isPlaying)
             flickerAudio.Play();
 
-        cameraShake.StartShake();
+        if (particulas != null)
+            particulas.PlayFromLights();
+
+        if (cameraShake != null)
+            cameraShake.StartShake();
 
         float timer = 0f;
 
         while (timer < flickerDuration)
         {
             foreach (Light l in spotLights)
-                l.intensity = Random.Range(minIntensity, maxIntensity);
+            {
+                if (l != null)
+                    l.intensity = Random.Range(minIntensity, maxIntensity);
+            }
 
             timer += flickerSpeed;
             yield return new WaitForSeconds(flickerSpeed);
         }
 
         for (int i = 0; i < spotLights.Length; i++)
-            spotLights[i].intensity = originalIntensities[i];
+        {
+            if (spotLights[i] != null)
+                spotLights[i].intensity = originalIntensities[i];
+        }
 
-        cameraShake.StopShake();
+        if (cameraShake != null)
+            cameraShake.StopShake();
 
         if (flickerAudio && flickerAudio.isPlaying)
             flickerAudio.Stop();
