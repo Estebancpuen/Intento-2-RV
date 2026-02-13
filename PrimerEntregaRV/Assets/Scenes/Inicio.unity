@@ -18005,6 +18005,7 @@ MonoBehaviour:
   duration: 10
   randomMinTime: 25
   randomMaxTime: 60
+  handsAnimator: {fileID: 1640020993}
 --- !u!1 &1572757618
 GameObject:
   m_ObjectHideFlags: 0
@@ -21022,6 +21023,7 @@ MonoBehaviour:
   playerCamera: {fileID: 330585545}
   lookSpeed: 2
   lookXLimit: 54.2
+  handsAnimator: {fileID: 1640020993}
 --- !u!136 &2104315214
 CapsuleCollider:
   m_ObjectHideFlags: 0

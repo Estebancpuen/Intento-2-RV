@@ -15,6 +15,8 @@ public class Particulas : MonoBehaviour
     public float randomMinTime = 40f;
     public float randomMaxTime = 90f;
 
+    [SerializeField] private Animator handsAnimator;
+
     bool isPlaying;
     Coroutine currentRoutine;
 
@@ -54,6 +56,10 @@ public class Particulas : MonoBehaviour
         if (player != null)
             transform.position = player.position;
 
+        // 🔥 ANIMACIÓN DE SORPRESA
+        if (handsAnimator != null)
+            handsAnimator.SetBool("isSurprised", true);
+
         // ▶ Partículas
         if (particles != null)
             particles.Play();
@@ -75,6 +81,9 @@ public class Particulas : MonoBehaviour
         if (audioSource != null && audioSource.isPlaying)
             audioSource.Stop();
 
+        if (handsAnimator != null)
+            handsAnimator.SetBool("isSurprised", false);
+
         isPlaying = false;
     }
 
@@ -90,5 +99,7 @@ public class Particulas : MonoBehaviour
                 currentRoutine = StartCoroutine(PlayEvent());
         }
     }
+
+
 }
 

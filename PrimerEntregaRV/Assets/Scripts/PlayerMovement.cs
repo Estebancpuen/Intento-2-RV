@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
+
+    [SerializeField] private Animator handsAnimator;
 
     void Start()
     {
@@ -66,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.x = 0;
             moveDirection.z = 0;
             characterController.Move(moveDirection * Time.deltaTime);
+            if (handsAnimator != null)
+                handsAnimator.SetBool("isWalking", false);
             return;
         }
 
@@ -79,6 +83,14 @@ public class PlayerMovement : MonoBehaviour
         float lastY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
         moveDirection.y = lastY;
+
+        bool isWalking = Mathf.Abs(curSpeedX) > 0.1f || Mathf.Abs(curSpeedY) > 0.1f;
+
+        
+        if (handsAnimator != null && !handsAnimator.GetBool("isSurprised"))
+        {
+            handsAnimator.SetBool("isWalking", isWalking);
+        }
 
         characterController.Move(moveDirection * Time.deltaTime);
     }
