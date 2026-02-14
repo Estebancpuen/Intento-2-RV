@@ -7518,8 +7518,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: acff93c9f1bd53645aa368b95c2a7300, type: 3}
   - {fileID: 8300000, guid: 3dbe0a2ea7ecc554f8511d3ff930246a, type: 3}
   - {fileID: 8300000, guid: 16c33e74a1f59584e9adfc9567cc3acb, type: 3}
-  minIdleSoundTime: 5
-  maxIdleSoundTime: 10
+  minIdleSoundTime: 8
+  maxIdleSoundTime: 19
   inspectMinDelay: 4
   inspectMaxDelay: 9
 --- !u!65 &425539151
@@ -9964,7 +9964,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d89afa0a6d24dbd4c905ede643917c33, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
