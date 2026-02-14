@@ -40,8 +40,14 @@ public class PickUpItem : MonoBehaviour
     [Header("Idle Doll Sounds")]
     public AudioSource idleAudio;
     public AudioClip[] idleClips;
-    public float minIdleSoundTime = 20f;
-    public float maxIdleSoundTime = 50f;
+    public float minIdleSoundTime = 10f;
+    public float maxIdleSoundTime = 30f;
+
+    [Header("Inspection Audio Timing")]
+    public float inspectMinDelay = 4f;
+    public float inspectMaxDelay = 9f;
+
+    private Coroutine inspectAudioRoutine;
 
     void Start()
     {
@@ -136,11 +142,7 @@ public class PickUpItem : MonoBehaviour
         transform.localRotation = initialInspectRotation;
 
         if (inspectAudio && inspectClip)
-        {
-            inspectAudio.clip = inspectClip;
-            inspectAudio.loop = true;
-            inspectAudio.Play();
-        }
+            inspectAudioRoutine = StartCoroutine(InspectAudioRoutine());
     }
 
     public void OnPickup(Transform holdPoint)
@@ -165,10 +167,14 @@ public class PickUpItem : MonoBehaviour
         if (rb)
             rb.isKinematic = false;
 
-        if (inspectAudio && inspectAudio.isPlaying)
+        if (inspectAudioRoutine != null)
         {
-            inspectAudio.Stop();
+            StopCoroutine(inspectAudioRoutine);
+            inspectAudioRoutine = null;
         }
+
+        if (inspectAudio && inspectAudio.isPlaying)
+            inspectAudio.Stop();
     }
 
 
@@ -189,10 +195,14 @@ public class PickUpItem : MonoBehaviour
         if (rb) rb.isKinematic = true;
         returning = true;
 
-        if (inspectAudio && inspectAudio.isPlaying)
+        if (inspectAudioRoutine != null)
         {
-            inspectAudio.Stop();
+            StopCoroutine(inspectAudioRoutine);
+            inspectAudioRoutine = null;
         }
+
+        if (inspectAudio && inspectAudio.isPlaying)
+            inspectAudio.Stop();
     }
 
     public bool IsBusy()
@@ -213,6 +223,20 @@ public class PickUpItem : MonoBehaviour
                 idleAudio.clip = clip;
                 idleAudio.Play();
             }
+        }
+    }
+
+    IEnumerator InspectAudioRoutine()
+    {
+        while (isInspecting)
+        {
+            inspectAudio.clip = inspectClip;
+            inspectAudio.Play();
+
+            yield return new WaitForSeconds(inspectAudio.clip.length);
+
+            float wait = Random.Range(inspectMinDelay, inspectMaxDelay);
+            yield return new WaitForSeconds(wait);
         }
     }
 }
