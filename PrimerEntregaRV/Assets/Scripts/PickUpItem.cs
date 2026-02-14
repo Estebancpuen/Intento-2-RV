@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
@@ -32,10 +33,20 @@ public class PickUpItem : MonoBehaviour
 
     private bool returning = false;
 
+    [Header("Inspection Audio")]
+    public AudioSource inspectAudio;
+    public AudioClip inspectClip;
+
+    [Header("Idle Doll Sounds")]
+    public AudioSource idleAudio;
+    public AudioClip[] idleClips;
+    public float minIdleSoundTime = 20f;
+    public float maxIdleSoundTime = 50f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(IdleSoundRoutine());
     }
 
     void Update()
@@ -123,6 +134,13 @@ public class PickUpItem : MonoBehaviour
 
         initialInspectRotation = Quaternion.Euler(inspectStartRotationEuler);
         transform.localRotation = initialInspectRotation;
+
+        if (inspectAudio && inspectClip)
+        {
+            inspectAudio.clip = inspectClip;
+            inspectAudio.loop = true;
+            inspectAudio.Play();
+        }
     }
 
     public void OnPickup(Transform holdPoint)
@@ -146,6 +164,11 @@ public class PickUpItem : MonoBehaviour
 
         if (rb)
             rb.isKinematic = false;
+
+        if (inspectAudio && inspectAudio.isPlaying)
+        {
+            inspectAudio.Stop();
+        }
     }
 
 
@@ -165,11 +188,32 @@ public class PickUpItem : MonoBehaviour
 
         if (rb) rb.isKinematic = true;
         returning = true;
+
+        if (inspectAudio && inspectAudio.isPlaying)
+        {
+            inspectAudio.Stop();
+        }
     }
 
     public bool IsBusy()
     {
         return isInspecting || returning;
+    }
+
+    IEnumerator IdleSoundRoutine()
+    {
+        while (true)
+        {
+            float wait = Random.Range(minIdleSoundTime, maxIdleSoundTime);
+            yield return new WaitForSeconds(wait);
+
+            if (!isInspecting && !isHeld && idleClips.Length > 0)
+            {
+                AudioClip clip = idleClips[Random.Range(0, idleClips.Length)];
+                idleAudio.clip = clip;
+                idleAudio.Play();
+            }
+        }
     }
 }
 

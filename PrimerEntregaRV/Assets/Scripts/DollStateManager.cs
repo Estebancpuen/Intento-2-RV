@@ -8,12 +8,20 @@ public class DollStateManager : MonoBehaviour
     public GameObject leftLeg;
     public GameObject rightLeg;
 
+    [Header("Damage Audio")]
+    public AudioSource damageAudio;
+    public AudioClip limbLostClip;
+    public AudioClip finalDeathClip;
+
     private int mistakes = 0;
     //private int maxMistakes = 4;
 
     public void RegisterMistake()
     {
         mistakes++;
+
+        if (damageAudio && limbLostClip)
+            damageAudio.PlayOneShot(limbLostClip);
 
         switch (mistakes)
         {
